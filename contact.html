@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script>
+(function(){
+  try {
+    var t = localStorage.getItem('jpcs-theme');
+    if (!t) { t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+    document.documentElement.setAttribute('data-theme', t);
+  } catch (e) {}
+})();
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us — JPCS T.I.P. QC Chapter</title>
+<meta name="description" content="Get in touch with JPCS T.I.P. QC Chapter — email, Facebook, Viber, and campus location.">
+<link rel="icon" href="assets/brand/jpcs-logo.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <nav class="nav">
+    <a class="nav-brand" href="index.html">
+      <img src="assets/brand/jpcs-logo.png" alt="JPCS T.I.P. QC logo">
+      <span>JPCS T.I.P. QC<small>Junior Philippine Computer Society</small></span>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="events.html">Our Events</a></li>
+      <li><a href="partnerships.html">Partnerships</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="contact.html" class="active">Contact Us</a></li>
+      <li class="theme-toggle-item"><button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle dark mode">🌙</button></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main">
+
+  <section class="hero" style="padding:64px 0 40px;">
+    <div class="container">
+      <span class="eyebrow">WE'D LOVE TO HEAR FROM YOU</span>
+      <h1 style="font-size:clamp(28px,4.5vw,46px);">Contact Us</h1>
+      <p class="lead">Questions about membership, events, or partnerships? Send us a message, or reach us directly through email, Facebook, or Viber.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container contact-grid">
+
+      <div class="cartridge">
+        <h3 class="mt-0">Send a message</h3>
+        <form id="contact-form">
+          <input type="hidden" name="access_key" value="fe481099-92e9-472d-b583-e614b848ac9a">
+          <input type="hidden" name="subject" value="New message from JPCS T.I.P. QC website">
+          <div class="field">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required autocomplete="name">
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required autocomplete="email">
+          </div>
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Send Message</button>
+          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+
+      <div>
+        <div class="cartridge" style="margin-bottom:24px;">
+          <h3 class="mt-0">Reach us directly</h3>
+          <ul class="contact-list">
+            <li>
+              <div class="contact-icon">✉</div>
+              <div><strong>Email</strong><br><a href="mailto:jpcs-sc.qc@tip.edu.ph">jpcs-sc.qc@tip.edu.ph</a></div>
+            </li>
+            <li>
+              <div class="contact-icon">f</div>
+              <div><strong>Facebook</strong><br><a href="https://www.facebook.com/jpcstipqcofficial" target="_blank" rel="noopener">facebook.com/jpcstipqcofficial</a></div>
+            </li>
+            <li>
+              <div class="contact-icon">V</div>
+              <div><strong>Viber</strong><br><a href="viber://chat?number=%2B639923707345">0992 370 7345</a></div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="cartridge">
+          <h3 class="mt-0">Find us</h3>
+          <p>Technological Institute of the Philippines, Quezon City<br>938 Aurora Blvd, Cubao, Quezon City, 1109 Metro Manila</p>
+          <div class="map-wrap">
+            <iframe
+              src="https://www.google.com/maps?q=938+Aurora+Blvd,+Cubao,+Quezon+City,+1109+Metro+Manila&output=embed"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Map to T.I.P. Quezon City, 938 Aurora Blvd, Cubao">
+            </iframe>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>JPCS T.I.P. QC Chapter</h4>
+        <p>Junior Philippine Computer Society, T.I.P. Quezon City Chapter — the student branch of the Philippine Computer Society.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul class="footer-links">
+          <li><a href="events.html">Our Events</a></li>
+          <li><a href="partnerships.html">Partnerships</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Reach Us</h4>
+        <ul class="footer-links">
+          <li><a href="mailto:jpcs-sc.qc@tip.edu.ph">jpcs-sc.qc@tip.edu.ph</a></li>
+          <li><a href="https://www.facebook.com/jpcstipqcofficial" target="_blank" rel="noopener">facebook.com/jpcstipqcofficial</a></li>
+          <li><a href="viber://chat?number=%2B639923707345">Viber: 0992 370 7345</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 JPCS – T.I.P. QC Chapter. Built for the org, deployed free on GitHub Pages.</span>
+      <span>Technological Institute of the Philippines, Quezon City</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+  const form = document.getElementById('contact-form');
+  const status = document.getElementById('form-status');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = 'Sending...';
+    submitBtn.disabled = true;
+    status.textContent = '';
+    status.className = 'form-status';
+
+    try {
+      const formData = new FormData(form);
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: formData
+      });
+      const data = await response.json();
+      if (response.ok && data.success) {
+        status.textContent = "Message sent! We'll get back to you soon.";
+        status.classList.add('ok');
+        form.reset();
+      } else {
+        status.textContent = data.message || 'Something went wrong. Please try again.';
+        status.classList.add('err');
+      }
+    } catch (err) {
+      status.textContent = 'Network error. Please try again in a moment.';
+      status.classList.add('err');
+    } finally {
+      submitBtn.textContent = originalText;
+      submitBtn.disabled = false;
+    }
+  });
+</script>
+</body>
+</html>

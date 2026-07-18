@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script>
+(function(){
+  try {
+    var t = localStorage.getItem('jpcs-theme');
+    if (!t) { t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+    document.documentElement.setAttribute('data-theme', t);
+  } catch (e) {}
+})();
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Events — JPCS T.I.P. QC Chapter</title>
+<meta name="description" content="Events run by JPCS T.I.P. QC Chapter: SLF 2025, RENDER3D workshop, General Assembly, our full event archive since 2022, and the D.R.A.F.T.S. mentorship program.">
+<link rel="icon" href="assets/brand/jpcs-logo.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <nav class="nav">
+    <a class="nav-brand" href="index.html">
+      <img src="assets/brand/jpcs-logo.png" alt="JPCS T.I.P. QC logo">
+      <span>JPCS T.I.P. QC<small>Junior Philippine Computer Society</small></span>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="events.html" class="active">Our Events</a></li>
+      <li><a href="partnerships.html">Partnerships</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+      <li class="theme-toggle-item"><button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle dark mode">🌙</button></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main">
+
+  <section class="hero" style="padding:64px 0 40px;">
+    <div class="container">
+      <span class="eyebrow">SY 2025–2026 &amp; BEYOND</span>
+      <h1 style="font-size:clamp(28px,4.5vw,46px);">Our Events</h1>
+      <p class="lead">Workshops, competitions, and assemblies — every activity we ran this year, and what's coming up next.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow on-light">SY 2025–2026 RECAP</span>
+        <h2>Events we ran this year</h2>
+        <p>Latest to oldest. Tap any photo for a larger view.</p>
+      </div>
+
+      <div class="grid grid-3">
+
+        <article class="cartridge event-card">
+          <img src="assets/events/schoolspirit-3.jpg" alt="General Assembly community photo" data-lightbox>
+          <div class="event-meta">October 29, 2025</div>
+          <h3>General Assembly: Spirit's Eve Festival</h3>
+          <p>Tech talks from guest JPCS chapters, a "Trick-or-Tech" challenge, and officer intros.</p>
+        </article>
+
+        <article class="cartridge event-card">
+          <img src="assets/events/render3d-1.jpg" alt="RENDER3D workshop, batch photo" data-lightbox>
+          <div class="event-meta">September 20, 2025 · Two batches</div>
+          <h3>RENDER3D: 3D Modeling &amp; Game Development Workshop</h3>
+          <p>A two-batch, hands-on seminar on 3D modeling for game development and Roblox.</p>
+        </article>
+
+        <article class="cartridge event-card">
+          <img src="assets/events/slf-booth-1.jpg" alt="JPCS booth, Student Life Fair Day 1" data-lightbox>
+          <div class="event-meta">September 1–10, 2025</div>
+          <h3>SLF 2025: The Neo-Scholar</h3>
+          <p>Booths, promo videos, and RSO membership drives — our biggest recruitment push of the year.</p>
+        </article>
+
+      </div>
+
+      <p style="margin-top:20px;font-size:14px;color:var(--navy-soft);">Looking for Project Prototype, Gen AI to Z, or our other joint activities? Those are on the <a href="partnerships.html" style="color:var(--teal);font-weight:600;">Partnerships</a> page.</p>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">OPERATIONAL PLAN, SY 2026–2027</span>
+        <h2>Coming up next</h2>
+        <p style="color:var(--cream-dim)">Straight from our operational plan — the activities we're targeting for the next school year.</p>
+      </div>
+      <div class="grid grid-3">
+        <div class="cartridge cartridge-dark">
+          <span class="tag coming-soon">Competition</span>
+          <h3>UI/UX Competition</h3>
+          <p>A design competition for members to test their UI/UX skills against fellow students, run alongside CCS DSC.</p>
+        </div>
+        <div class="cartridge cartridge-dark">
+          <span class="tag coming-soon">Seminar</span>
+          <h3>UI/UX Design (Figma-Based Interface Development)</h3>
+          <p>A seminar walking members through interface design fundamentals and hands-on practice in Figma.</p>
+        </div>
+        <div class="cartridge cartridge-dark">
+          <span class="tag coming-soon">Outreach</span>
+          <h3>Gift Giving</h3>
+          <p>A community outreach activity giving back through both a discipline-related and an institutional initiative.</p>
+        </div>
+        <div class="cartridge cartridge-dark">
+          <span class="tag coming-soon">General Assembly</span>
+          <h3>JPCS Team Building</h3>
+          <p>A bonding activity for members and officers to strengthen camaraderie outside the usual seminar setting.</p>
+        </div>
+        <div class="cartridge cartridge-dark">
+          <span class="tag coming-soon">Seminar / Workshop</span>
+          <h3>Town Hall: Emerging Technologies</h3>
+          <p>An open forum on the latest developments in tech, held each semester to keep members up to date.</p>
+        </div>
+        <div class="cartridge cartridge-dark">
+          <span class="tag coming-soon">Recruitment</span>
+          <h3>Student Life Fair 2026</h3>
+          <p>Our next recruitment drive and biggest annual booth event, building on this year's momentum.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow on-light">CHAPTER ARCHIVE</span>
+        <h2>Events held through the years</h2>
+        <p>A running record of everything JPCS – T.I.P. QC has held since 2022 — one horizontal row per school year. Scroll, swipe, or use the arrows.</p>
+      </div>
+
+      <div class="archive-row-head">
+        <h3>S.Y. 2025–2026</h3>
+        <span>3 events</span>
+      </div>
+      <div class="gallery-wrap" style="margin-bottom:44px;">
+        <button class="gallery-arrow gallery-arrow-sm left" aria-label="Scroll S.Y. 2025–2026 row left" type="button">‹</button>
+        <div class="gallery-track" tabindex="0" role="region" aria-label="Events held in S.Y. 2025–2026">
+          <div class="cartridge archive-card gallery-item">
+            <img src="assets/events/schoolspirit-3.jpg" alt="General Assembly Spirit's Eve Festival" data-lightbox>
+            <h4>General Assembly — Spirit's Eve Festival</h4>
+            <span class="event-meta">Oct 29, 2025</span>
+          </div>
+          <div class="cartridge archive-card gallery-item">
+            <img src="assets/events/render3d-1.jpg" alt="RENDER3D workshop" data-lightbox>
+            <h4>RENDER3D: 3D Modeling &amp; Game Development Workshop</h4>
+            <span class="event-meta">Sept 20, 2025</span>
+          </div>
+          <div class="cartridge archive-card gallery-item">
+            <img src="assets/events/slf-booth-1.jpg" alt="SLF 2025 The Neo-Scholar" data-lightbox>
+            <h4>SLF 2025: The Neo-Scholar</h4>
+            <span class="event-meta">Sept 1–10, 2025</span>
+          </div>
+        </div>
+        <button class="gallery-arrow gallery-arrow-sm right" aria-label="Scroll S.Y. 2025–2026 row right" type="button">›</button>
+      </div>
+
+      <div class="archive-row-head">
+        <h3>S.Y. 2024–2025</h3>
+        <span>5 events</span>
+      </div>
+      <div class="gallery-wrap" style="margin-bottom:44px;">
+        <button class="gallery-arrow gallery-arrow-sm left" aria-label="Scroll S.Y. 2024–2025 row left" type="button">‹</button>
+        <div class="gallery-track" tabindex="0" role="region" aria-label="Events held in S.Y. 2024–2025">
+          <div class="cartridge archive-card gallery-item">
+            <div class="placeholder-box"><span>🖼</span><p>Photo coming soon</p></div>
+            <h4>From Code to Confidence: Excelling in Your Thesis Defense</h4>
+            <span class="event-meta">March 26, 2025</span>
+          </div>
+          <div class="cartridge archive-card gallery-item">
+            <div class="placeholder-box"><span>🖼</span><p>Photo coming soon</p></div>
+            <h4>General Assembly — Red Light, Green Light: No Errors Left Behind</h4>
+            <span class="event-meta">March 11, 2025</span>
+          </div>
+          <div class="cartridge archive-card gallery-item">
+            <div class="placeholder-box"><span>🖼</span><p>Photo coming soon</p></div>
+            <h4>UI/UX Challenge: It Takes Two to Cosmo</h4>
+            <span class="event-meta">Nov 27, 2024</span>
+          </div>
+          <div class="cartridge archive-card gallery-item">
+            <div class="placeholder-box"><span>🖼</span><p>Photo coming soon</p></div>
+            <h4>SLF 2024: Reflect</h4>
+            <span class="event-meta">Oct 8–16, 2024</span>
+          </div>
+          <div class="cartridge archive-card gallery-item">
+            <div class="placeholder-box"><span>🖼</span><p>Photo coming soon</p></div>
+            <h4>TECH Talks!: Problem-Solving &amp; The Power of Awareness</h4>
+            <span class="event-meta">Sept 24, 2024</span>
+          </div>
+        </div>
+        <button class="gallery-arrow gallery-arrow-sm right" aria-label="Scroll S.Y. 2024–2025 row right" type="button">›</button>
+      </div>
+
+      <div class="archive-row-head">
+        <h3>S.Y. 2023–2024</h3>
+        <span>3 events</span>
+      </div>
+      <div class="gallery-wrap" style="margin-bottom:44px;">
+        <button class="gallery-arrow gallery-arrow-sm left" aria-label="Scroll S.Y. 2023–2024 row left" type="button">‹</button>
+        <div class="gallery-track" tabindex="0" role="region" aria-label="Events held in S.Y. 2023–2024">
+          <div class="cartridge archive-card gallery-item">
+            <div class="placeholder-box"><span>🖼</span><p>Photo coming soon</p></div>
+            <h4>Cyber Security Buff: Defending Against SQL Injection &amp; Brute Force Assaults</h4>
+            <span class="event-meta">April 17, 2024</span>
+          </div>
+          <div class="cartridge archive-card gallery-item">
+            <div class="placeholder-box"><span>🖼</span><p>Photo coming soon</p></div>
+            <h4>The UI/UX Challenge: Where Pixels Meet People</h4>
+            <span class="event-meta">Nov 15, 2023</span>
+          </div>
+          <div class="cartridge archive-card gallery-item">
+            <div class="placeholder-box"><span>🖼</span><p>Photo coming soon</p></div>
+            <h4>SLF 2023: Drive Around Kyusi</h4>
+            <span class="event-meta">Oct 9–13, 2023</span>
+          </div>
+        </div>
+        <button class="gallery-arrow gallery-arrow-sm right" aria-label="Scroll S.Y. 2023–2024 row right" type="button">›</button>
+      </div>
+
+      <div class="archive-row-head">
+        <h3>S.Y. 2022–2023</h3>
+        <span>4 events</span>
+      </div>
+      <div class="gallery-wrap">
+        <button class="gallery-arrow gallery-arrow-sm left" aria-label="Scroll S.Y. 2022–2023 row left" type="button">‹</button>
+        <div class="gallery-track" tabindex="0" role="region" aria-label="Events held in S.Y. 2022–2023">
+          <div class="cartridge archive-card gallery-item">
+            <div class="placeholder-box"><span>🖼</span><p>Photo coming soon</p></div>
+            <h4>The Art &amp; Science of Robotics: From Concept to Creation with Arduino</h4>
+            <span class="event-meta">May 11, 2023</span>
+          </div>
+          <div class="cartridge archive-card gallery-item">
+            <div class="placeholder-box"><span>🖼</span><p>Photo coming soon</p></div>
+            <h4>Unlock the Power of Data: Real-World Analytics Solutions!</h4>
+            <span class="event-meta">March 24, 2023</span>
+          </div>
+          <div class="cartridge archive-card gallery-item">
+            <div class="placeholder-box"><span>🖼</span><p>Photo coming soon</p></div>
+            <h4>Artificial Intelligence A–Z: Fundamentals of Data Science and Beyond</h4>
+            <span class="event-meta">Dec 6, 2022</span>
+          </div>
+          <div class="cartridge archive-card gallery-item">
+            <div class="placeholder-box"><span>🖼</span><p>Photo coming soon</p></div>
+            <h4>SLF 2022</h4>
+            <span class="event-meta">Oct 10–19, 2022</span>
+          </div>
+        </div>
+        <button class="gallery-arrow gallery-arrow-sm right" aria-label="Scroll S.Y. 2022–2023 row right" type="button">›</button>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow on-light">ONGOING INITIATIVE</span>
+        <h2>D.R.A.F.T.S. Mentorship Program</h2>
+        <p>Driven Representatives Aspiring For Transcendence and Stewardship — our ongoing mentorship program, not a one-off event. It runs continuously, pairing members with guidance for personal and professional growth throughout their time in JPCS.</p>
+      </div>
+      <div class="grid grid-3">
+        <div class="cartridge">
+          <div class="partner-badge" style="margin-bottom:16px;">🤝</div>
+          <h3>Guided Mentorship</h3>
+          <p>Members are paired with officers and senior peers who've walked the same path, for one-on-one guidance whenever it's needed.</p>
+        </div>
+        <div class="cartridge">
+          <div class="partner-badge" style="margin-bottom:16px;">🌱</div>
+          <h3>Personal Growth</h3>
+          <p>Beyond academics and tech skills — building confidence, character, and the habits that carry into life after JPCS.</p>
+        </div>
+        <div class="cartridge">
+          <div class="partner-badge" style="margin-bottom:16px;">🎯</div>
+          <h3>Professional Stewardship</h3>
+          <p>Preparing members to eventually lead and mentor others themselves — stewardship that passes forward, chapter to chapter.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>JPCS T.I.P. QC Chapter</h4>
+        <p>Junior Philippine Computer Society, T.I.P. Quezon City Chapter — the student branch of the Philippine Computer Society.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul class="footer-links">
+          <li><a href="events.html">Our Events</a></li>
+          <li><a href="partnerships.html">Partnerships</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Reach Us</h4>
+        <ul class="footer-links">
+          <li><a href="mailto:jpcs-sc.qc@tip.edu.ph">jpcs-sc.qc@tip.edu.ph</a></li>
+          <li><a href="https://www.facebook.com/jpcstipqcofficial" target="_blank" rel="noopener">facebook.com/jpcstipqcofficial</a></li>
+          <li><a href="viber://chat?number=%2B639923707345">Viber: 0992 370 7345</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 JPCS – T.I.P. QC Chapter. Built for the org, deployed free on GitHub Pages.</span>
+      <span>Technological Institute of the Philippines, Quezon City</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

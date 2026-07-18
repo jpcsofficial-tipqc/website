@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script>
+(function(){
+  try {
+    var t = localStorage.getItem('jpcs-theme');
+    if (!t) { t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+    document.documentElement.setAttribute('data-theme', t);
+  } catch (e) {}
+})();
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JPCS T.I.P. QC Chapter — Junior Philippine Computer Society</title>
+<meta name="description" content="Junior Philippine Computer Society – T.I.P. QC Chapter. Official website for events, partnerships, officers, and contact information.">
+<link rel="icon" href="assets/brand/jpcs-logo.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <nav class="nav">
+    <a class="nav-brand" href="index.html">
+      <img src="assets/brand/jpcs-logo.png" alt="JPCS T.I.P. QC logo">
+      <span>JPCS T.I.P. QC<small>Junior Philippine Computer Society</small></span>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="events.html">Our Events</a></li>
+      <li><a href="partnerships.html">Partnerships</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+      <li class="theme-toggle-item"><button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle dark mode">🌙</button></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main">
+
+  <section class="hero">
+    <div class="container">
+      <span class="eyebrow">T.I.P. QUEZON CITY · STUDENT ARM OF PCS</span>
+      <h1>Grow your skills. Discover new tech.<br><span class="accent">Connect with your people.</span></h1>
+      <p class="lead">The Junior Philippine Computer Society – T.I.P. QC Chapter is the student branch of the Philippine Computer Society, the country's longest-running professional IT association. We run the events, workshops, and competitions that turn CS/IT students into ICT professionals.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="events.html">Explore Our Events</a>
+        <a class="btn btn-ghost btn-on-dark" href="about.html">Meet the Officers</a>
+      </div>
+
+      <div class="stat-strip">
+        <div class="stat"><div class="num">804</div><div class="label">Student members</div></div>
+        <div class="stat"><div class="num">2023–2025</div><div class="label">Years of steady growth</div></div>
+        <div class="stat"><div class="num">15</div><div class="label">Events organized since 2022</div></div>
+        <div class="stat"><div class="num">6+</div><div class="label">Partner orgs & collaborators</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container two-col-text">
+      <div>
+        <span class="eyebrow on-light">WHO WE ARE</span>
+        <h2>An extracurricular home for ICT students</h2>
+        <p>JPCS – T.I.P. QC Chapter creates and sustains an extracurricular learning environment that complements your academic experience, responds to what the ICT industry actually needs, and prepares you to be a better ICT professional.</p>
+      </div>
+      <div>
+        <span class="eyebrow on-light">WHAT WE STAND FOR</span>
+        <h2>Technical excellence, real friendships</h2>
+        <p>We unite and commit our members to technical and leadership excellence, to fostering lasting friendships, and to constructive cooperation in genuine love of God and country. Every event we run is built around one of these.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow on-light">LOOKING BACK</span>
+        <h2>SLF 2025: The Neo Scholar</h2>
+        <p>Every year, Student Life Fair is where JPCS puts its best foot forward — and SLF 2025 was no exception. Our booth and promo video earned us two of the fair's top honors.</p>
+      </div>
+
+      <div class="award-chips">
+        <span class="award-chip">🏆 Best Booth</span>
+        <span class="award-chip">🏆 Best Promotional Video</span>
+      </div>
+
+      <div class="gallery-wrap">
+        <button class="gallery-arrow left" aria-label="Scroll gallery left" type="button">‹</button>
+
+        <div class="gallery-track" tabindex="0" role="region" aria-label="SLF 2025: The Neo Scholar photo and video gallery. Use the arrow buttons or arrow keys to browse.">
+
+          <div class="gallery-item gallery-item-video">
+            <div class="fb-video-wrap">
+              <iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FLORSOTIPQC%2Fvideos%2F1167798285184578%2F&show_text=false&width=560&t=0"
+                width="560" height="314" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
+                allowfullscreen="true"
+                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                title="JPCS SLF 2025 promotional video, via LORSO T.I.P. QC"></iframe>
+            </div>
+            <div class="gallery-caption">Our award-winning promo video</div>
+          </div>
+
+          <div class="gallery-item">
+            <div class="placeholder-box"><span>🖼</span><p>Photo coming soon</p></div>
+            <div class="gallery-caption">Booth setup, Day 1</div>
+          </div>
+
+          <div class="gallery-item">
+            <div class="placeholder-box"><span>🖼</span><p>Photo coming soon</p></div>
+            <div class="gallery-caption">Awarding moment</div>
+          </div>
+
+          <div class="gallery-item">
+            <div class="placeholder-box"><span>🖼</span><p>Photo coming soon</p></div>
+            <div class="gallery-caption">Officers &amp; members at the fair</div>
+          </div>
+
+        </div>
+
+        <button class="gallery-arrow right" aria-label="Scroll gallery right" type="button">›</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow on-light">THE ANNUAL REPORT</span>
+        <h2>What we've been up to this year</h2>
+        <p>A quick look at the flagship events from SY 2025–2026. Full details are on the Events page.</p>
+      </div>
+      <div class="grid grid-3">
+        <article class="cartridge event-card">
+          <img src="assets/events/slf-booth-1.jpg" alt="JPCS booth at Student Life Fair 2025">
+          <div class="event-meta">Sept 1–10, 2025</div>
+          <h3>SLF 2025: The Neo-Scholar</h3>
+          <p>Days of booths, promo videos, and RSO membership drives — one of our biggest recruitment pushes of the year.</p>
+        </article>
+        <article class="cartridge event-card">
+          <img src="assets/events/render3d-1.jpg" alt="RENDER3D workshop participants">
+          <div class="event-meta">Sept 20, 2025</div>
+          <h3>RENDER3D Workshop</h3>
+          <p>A two-batch, hands-on seminar on 3D modeling for game development and virtual reality.</p>
+        </article>
+        <article class="cartridge event-card">
+          <img src="assets/events/schoolspirit-3.jpg" alt="General Assembly Spirit's Eve Festival">
+          <div class="event-meta">Oct 29, 2025</div>
+          <h3>General Assembly: Spirit's Eve Festival</h3>
+          <p>Tech talks from guest JPCS chapters, a "Trick-or-Tech" challenge, and officer intros.</p>
+        </article>
+      </div>
+      <p class="text-center" style="margin-top:32px;"><a class="btn btn-primary" href="events.html">See all events &amp; upcoming activities →</a></p>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">BUILT ON PARTNERSHIP</span>
+        <h2>We don't grow alone</h2>
+        <p style="color:var(--cream-dim)">From our national affiliation to campus-wide collaborations, here's who we build with.</p>
+      </div>
+      <div class="grid grid-3">
+        <div class="cartridge cartridge-dark partner-card">
+          <div class="partner-badge">PCS</div>
+          <div><h3>PCS National Chapter</h3><p>Our parent organization — the longest-running professional IT association in the Philippines.</p></div>
+        </div>
+        <div class="cartridge cartridge-dark partner-card">
+          <div class="partner-badge">VC</div>
+          <div><h3>Vibe Coders PH</h3><p>Our partner for Gen AI to Z: A Career Summit, connecting members to careers shaped by generative AI.</p></div>
+        </div>
+        <div class="cartridge cartridge-dark partner-card">
+          <div class="partner-badge">UP</div>
+          <div><h3>UP Junior Finance Association</h3><p>Our collaborator for UP Fair 2024: Quests, a joint inter-collegiate activity at UP Diliman.</p></div>
+        </div>
+      </div>
+      <p class="text-center" style="margin-top:32px;"><a class="btn btn-primary" href="partnerships.html">See all partnerships →</a></p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>JPCS T.I.P. QC Chapter</h4>
+        <p>Junior Philippine Computer Society, T.I.P. Quezon City Chapter — the student branch of the Philippine Computer Society.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul class="footer-links">
+          <li><a href="events.html">Our Events</a></li>
+          <li><a href="partnerships.html">Partnerships</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Reach Us</h4>
+        <ul class="footer-links">
+          <li><a href="mailto:jpcs-sc.qc@tip.edu.ph">jpcs-sc.qc@tip.edu.ph</a></li>
+          <li><a href="https://www.facebook.com/jpcstipqcofficial" target="_blank" rel="noopener">facebook.com/jpcstipqcofficial</a></li>
+          <li><a href="viber://chat?number=%2B639923707345">Viber: 0992 370 7345</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 JPCS – T.I.P. QC Chapter. Built for the org, deployed free on GitHub Pages.</span>
+      <span>Technological Institute of the Philippines, Quezon City</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script>
+(function(){
+  try {
+    var t = localStorage.getItem('jpcs-theme');
+    if (!t) { t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+    document.documentElement.setAttribute('data-theme', t);
+  } catch (e) {}
+})();
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Partnerships — JPCS T.I.P. QC Chapter</title>
+<meta name="description" content="JPCS T.I.P. QC Chapter's partnerships and affiliations — our mother organization PCS National, campus collaborations, and partners beyond campus. Interested in partnering with us? Get in touch.">
+<link rel="icon" href="assets/brand/jpcs-logo.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <nav class="nav">
+    <a class="nav-brand" href="index.html">
+      <img src="assets/brand/jpcs-logo.png" alt="JPCS T.I.P. QC logo">
+      <span>JPCS T.I.P. QC<small>Junior Philippine Computer Society</small></span>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="events.html">Our Events</a></li>
+      <li><a href="partnerships.html" class="active">Partnerships</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+      <li class="theme-toggle-item"><button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle dark mode">🌙</button></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main">
+
+  <section class="hero" style="padding:64px 0 40px;">
+    <div class="container">
+      <span class="eyebrow">COLLABORATION &amp; RECOGNITION</span>
+      <h1 style="font-size:clamp(28px,4.5vw,46px);">Partners in building something bigger</h1>
+      <p class="lead">JPCS – T.I.P. QC Chapter grows through the organizations, chapters, and communities we build alongside. We're proud of every partnership on this page — and always looking for the next one.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow on-light">OUR MOTHER ORGANIZATION</span>
+        <h2>Philippine Computer Society — National Chapter</h2>
+      </div>
+      <div class="org-spotlight">
+        <div class="org-spotlight-badge">PCS</div>
+        <div>
+          <p style="margin-bottom:12px;">JPCS – T.I.P. QC Chapter operates under the Philippine Computer Society (PCS) National Chapter as its mother organization — the longest-existing professional association of computing and information technology in the Philippines.</p>
+          <p style="margin:0;">That affiliation, renewed every year, is what connects every member of our chapter to a nationwide professional IT community — long after graduation, not just for four years on campus.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow on-light">AFFILIATIONS</span>
+        <h2>Who we're officially part of</h2>
+      </div>
+      <div class="grid grid-2">
+        <div class="cartridge partner-card">
+          <div class="partner-badge">L</div>
+          <div>
+            <h3>LORSO</h3>
+            <p>Our League of Organizations coordinates recognition, scheduling, and Student Life Fair logistics with all recognized student organizations on campus.</p>
+          </div>
+        </div>
+        <div class="cartridge partner-card">
+          <div class="partner-badge">CCS</div>
+          <div>
+            <h3>College of Computer Studies</h3>
+            <p>CCS backs our programs with the resources and approvals needed to run a full calendar of events every year.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow on-light">COLLABORATION</span>
+        <h2>Events with campus organizations</h2>
+        <p>Latest to oldest.</p>
+      </div>
+      <div class="grid grid-2">
+        <article class="cartridge event-card">
+          <span class="tag">Design Workshop</span>
+          <div class="event-meta">January 14, 2026 · with CCS DSC</div>
+          <h3>Project Prototype: Out With the Old, In With the New</h3>
+          <p>Co-run with the College of Computer Studies' DSC, pairing our members with guest facilitators for a full day of Figma and UI/UX training.</p>
+          <div class="photo-strip">
+            <img src="assets/events/prototype-1.jpg" alt="Project Prototype joint workshop" data-lightbox>
+            <img src="assets/events/prototype-2.jpg" alt="UI UX training session" data-lightbox>
+          </div>
+        </article>
+        <article class="cartridge event-card">
+          <span class="tag">Seminar</span>
+          <div class="event-meta">March 26, 2025 · with TIP QC – ACM Student Chapter</div>
+          <h3>From Code to Confidence: Excelling in Your Thesis Defense</h3>
+          <p>A seminar co-run with the TIP QC Association for Computing Machinery (ACM) Student Chapter, helping members prepare for thesis defenses with practical, confidence-building guidance.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow on-light">PARTNERSHIPS</span>
+        <h2>Beyond campus</h2>
+        <p>Tap any photo for a larger view.</p>
+      </div>
+      <div class="grid grid-3">
+        <article class="cartridge event-card">
+          <img src="assets/events/genaitoz-3.jpg" alt="JPCS members group photo at Gen AI to Z" data-lightbox>
+          <div class="event-meta">March 17, 2026 · with Vibe Coders PH</div>
+          <h3>Gen AI to Z: A Career Summit</h3>
+          <p>A career summit connecting our members to a wider conversation on careers shaped by generative AI.</p>
+        </article>
+        <article class="cartridge event-card">
+          <img src="assets/events/dlsu-msc-profile.jpg" alt="Build Your Professional Profile event poster" data-lightbox>
+          <div class="event-meta">July 11, 22 &amp; 25, 2026 · with DLSU Manila – Microsoft Student Community</div>
+          <h3>Build Your Professional Profile</h3>
+          <p>A 3-day career-readiness program: Day 1 Skill Building, Day 2 Portfolio Building, Day 3 Networking. <a href="https://www.facebook.com/share/p/194pAiaJ5P/" target="_blank" rel="noopener" style="color:var(--teal);font-weight:600;">View the post →</a></p>
+        </article>
+        <article class="cartridge event-card">
+          <div class="placeholder-box"><span>🖼</span><p>Photo coming soon</p></div>
+          <div class="event-meta">February 15, 2024 · with UP Junior Finance Association</div>
+          <h3>UP Fair 2024: Quests Thursday</h3>
+          <p>Held at UP Diliman Sunken Garden — celebrating women and queer empowerment with big names in OPM including Morissette, Yeng Constantino, and Gloc-9.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow on-light">GRATITUDE</span>
+        <h2>Guest speakers &amp; industry partners</h2>
+      </div>
+      <p style="max-width:720px;">Every Tech Talk, workshop, and seminar this year ran on the generosity of guest speakers and industry partners who shared their time and expertise — from fellow JPCS chapters at our General Assembly, to design practitioners at Project Prototype, to the broader industry voices at Gen AI to Z. We're grateful for every one of them.</p>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="container">
+      <div class="cta-banner">
+        <span class="eyebrow">LET'S BUILD TOGETHER</span>
+        <h2>Want to partner with JPCS?</h2>
+        <p>Whether it's a joint workshop, a career talk, a sponsorship, or something entirely new — we're always glad to hear from organizations who want to grow alongside our members.</p>
+        <a class="btn btn-primary" href="contact.html">Get in touch →</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>JPCS T.I.P. QC Chapter</h4>
+        <p>Junior Philippine Computer Society, T.I.P. Quezon City Chapter — the student branch of the Philippine Computer Society.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul class="footer-links">
+          <li><a href="events.html">Our Events</a></li>
+          <li><a href="partnerships.html">Partnerships</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Reach Us</h4>
+        <ul class="footer-links">
+          <li><a href="mailto:jpcs-sc.qc@tip.edu.ph">jpcs-sc.qc@tip.edu.ph</a></li>
+          <li><a href="https://www.facebook.com/jpcstipqcofficial" target="_blank" rel="noopener">facebook.com/jpcstipqcofficial</a></li>
+          <li><a href="viber://chat?number=%2B639923707345">Viber: 0992 370 7345</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 JPCS – T.I.P. QC Chapter. Built for the org, deployed free on GitHub Pages.</span>
+      <span>Technological Institute of the Philippines, Quezon City</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
