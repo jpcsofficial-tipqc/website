@@ -3,17 +3,18 @@ document.addEventListener('DOMContentLoaded', () => {
   // Dark mode toggle --------------------------------------------------
   const themeToggle = document.getElementById('theme-toggle');
   if (themeToggle) {
-    const applyIcon = () => {
-      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    const setIconFor = (isDark) => {
       themeToggle.textContent = isDark ? '☀️' : '🌙';
       themeToggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
     };
-    applyIcon();
+    setIconFor(document.documentElement.getAttribute('data-theme') === 'dark');
     themeToggle.addEventListener('click', () => {
       const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
       document.documentElement.setAttribute('data-theme', next);
       try { localStorage.setItem('jpcs-theme', next); } catch (e) {}
-      applyIcon();
+      themeToggle.classList.add('spin');
+      window.setTimeout(() => setIconFor(next === 'dark'), 140);
+      window.setTimeout(() => themeToggle.classList.remove('spin'), 420);
     });
   }
 
@@ -33,21 +34,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Scrollable galleries: arrow buttons + arrow-key support --------------
-  document.querySelectorAll('.gallery-wrap').forEach(wrap => {
-    const track = wrap.querySelector('.gallery-track');
-    const leftBtn = wrap.querySelector('.gallery-arrow.left');
-    const rightBtn = wrap.querySelector('.gallery-arrow.right');
-    if (!track) return;
-
+  // Scrollable galleries: arrow-key support --------------
+  document.querySelectorAll('.gallery-track').forEach(track => {
     const step = () => Math.max(track.clientWidth * 0.8, 240);
-
-    if (leftBtn) leftBtn.addEventListener('click', () => {
-      track.scrollBy({ left: -step(), behavior: 'smooth' });
-    });
-    if (rightBtn) rightBtn.addEventListener('click', () => {
-      track.scrollBy({ left: step(), behavior: 'smooth' });
-    });
 
     track.addEventListener('keydown', (e) => {
       if (e.key === 'ArrowRight') {
@@ -61,13 +50,33 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Reveal-on-scroll ------------------------------------------------------
-  const revealSelectors = '.cartridge, .section-head, .stat, .org-spotlight, .cta-banner, .gallery-wrap, .award-chips';
-  const revealEls = Array.from(document.querySelectorAll(revealSelectors))
-    .filter(el => !el.closest('.gallery-track')); // don't hide items inside a carousel
-
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   if ('IntersectionObserver' in window && !prefersReducedMotion) {
+    // Grids: reveal children as a staggered cascade when the grid enters view
+    const grids = Array.from(document.querySelectorAll('.grid')).filter(g => !g.closest('.gallery-track'));
+    grids.forEach(grid => {
+      const children = Array.from(grid.children);
+      children.forEach((child, i) => {
+        child.classList.add('reveal-child');
+        child.style.setProperty('--stagger-i', i);
+      });
+    });
+
+    const gridIO = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          Array.from(entry.target.children).forEach(child => child.classList.add('is-visible'));
+          gridIO.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    grids.forEach(grid => gridIO.observe(grid));
+
+    // Standalone elements: simple fade-up, one at a time as each scrolls into view
+    const revealSelectors = '.section-head, .org-spotlight, .cta-banner, .gallery-wrap, .award-chips, .video-feature';
+    const revealEls = Array.from(document.querySelectorAll(revealSelectors))
+      .filter(el => !el.closest('.gallery-track') && !el.closest('.grid'));
     revealEls.forEach(el => el.classList.add('reveal'));
 
     const io = new IntersectionObserver((entries) => {
@@ -78,8 +87,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-
     revealEls.forEach(el => io.observe(el));
+  }
+
+  // Hero entrance: plays once immediately on load, no scroll trigger needed
+  if (!prefersReducedMotion) {
+    const hero = document.querySelector('.hero');
+    if (hero) requestAnimationFrame(() => hero.classList.add('hero-in'));
   }
 
   // Lightbox for clickable images ------------------------------------------
