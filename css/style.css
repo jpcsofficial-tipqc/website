@@ -902,6 +902,14 @@ img[data-lightbox] { cursor: zoom-in; }
 /* SLF photo grid cards on the homepage recap */
 .slf-photo-card { padding: 16px; }
 .slf-photo-card .placeholder-box { margin-bottom: 12px; }
+.slf-photo-card img {
+  aspect-ratio: 4/3;
+  width: 100%;
+  border-radius: 6px;
+  border: 2px solid var(--border-strong);
+  object-fit: cover;
+  margin-bottom: 12px;
+}
 .slf-photo-card .gallery-caption { margin-top: 0; }
 
 .skip-link {
