@@ -148,4 +148,277 @@ document.addEventListener('DOMContentLoaded', () => {
       if (e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox();
     });
   }
+
+  // Event Details Modal ---------------------------------------------------
+  const EVENTS_DATA = {
+    slf2026: {
+      title: 'SLF 2026 – Pixarverse',
+      statusLabel: 'Completed',
+      statusClass: 'completed',
+      dateLabel: 'July 27, 2026 – August 20, 2026',
+      description: [
+        "The Junior Philippine Computer Society (JPCS) took part in Student Life Fair 2026, welcoming TIPians to a community centered on technology, innovation, and collaboration.",
+        "Over the two-day event, students visited the JPCS booth to learn more about the organization, connect with fellow tech enthusiasts, and discover opportunities in computing. The fair also marked the opening of JPCS membership registration, inviting new and returning members to take part in upcoming events, competitions, and activities throughout the academic year."
+      ],
+      media: [
+        { label: 'Facebook post', html: '<iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FLORSOTIPQC%2Fposts%2Fpfbid0w5asfRGn3s9D9W7N2euUwf39jomQYFjThtJow7vipivZcicbEZazLsXAKZj2QfQYl&show_text=true&width=500" width="500" height="730" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>' },
+        { label: 'Facebook reel', html: '<iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F2127831438075925%2F&show_text=true&width=267&t=0" width="267" height="591" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>' },
+        { label: 'Facebook post', html: '<iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fjpcstipqcofficial%2Fposts%2Fpfbid037rbMz4iogDnjgXZun1SvnyL9UxTmaTDLhdiDeAQQjSjXQivSsHrfJUxEnQksqzpnl&show_text=true&width=500" width="500" height="734" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>' },
+        { label: 'Facebook post', html: '<iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fjpcstipqcofficial%2Fposts%2Fpfbid02y1dgx8jP8CEdAZNFZ6T3qBJ5SRdgEGtnwPvyK8MbFXqiVymyugazq8ttA95jgiBWl&show_text=true&width=500" width="500" height="810" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>' },
+        { label: 'Facebook post', html: '<iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fjpcstipqcofficial%2Fposts%2Fpfbid02KyoFLGMnt6A7W2GhsCzXmBGUsYTsRnsYD5nrX4ZXZhLNgHoJqeseQb2M9wSGQaoWl&show_text=true&width=500" width="500" height="849" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>' }
+      ]
+    },
+    'iot-seminar': {
+      title: 'IoT Seminar – Where Devices Connect: Exploring the World of IoT',
+      statusLabel: 'Postponed – New Date Will Be Announced Soon',
+      statusClass: 'postponed',
+      dateLabel: 'Was: September 5, 2026',
+      location: 'T.I.P. Quezon City',
+      speaker: 'Engr. Zherish Galvin Mayordo',
+      description: [
+        "The Junior Philippine Computer Society (JPCS) was set to host \u201cWhere Devices Connect: Exploring the World of IoT,\u201d a seminar focused on the Internet of Things, smart systems, automation, and the growing convergence of Artificial Intelligence and IoT (AIoT).",
+        "The seminar was scheduled for September 5, 2026, at T.I.P. Quezon City, featuring Engr. Zherish Galvin Mayordo as the guest speaker. However, due to the Habagat and the resulting class suspension, the event was postponed.",
+        "A new date will be announced once rescheduled. JPCS looks forward to bringing students together for an engaging discussion on connected technologies and their role in shaping the future."
+      ],
+      media: [
+        { label: 'Facebook post', html: '<iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fjpcstipqcofficial%2Fposts%2Fpfbid0249Ljwq3BHp2g4d3zLZ4vt2FyK5d7iLbnwqPRjkkLHY4hCkrKwDEfFVXTCEHENFCCl&show_text=true&width=500" width="500" height="717" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>' },
+        { label: 'Facebook post', html: '<iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fjpcstipqcofficial%2Fposts%2Fpfbid0DGMbimsdkDqN7KGBzYhDHJvuWbqpfexcqg342geeMJQWQBp9WNWQCdBSsPfHZxNCl&show_text=true&width=500" width="500" height="718" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>' }
+      ]
+    },
+    'cloudchain-summit': {
+      title: 'CloudChain Summit: Blockchain & Web3 on AWS',
+      statusLabel: 'Upcoming – Rescheduled to Sept 23, 2026',
+      statusClass: 'upcoming',
+      dateLabel: 'September 23, 2026 (originally Aug 28, 2026)',
+      location: 'QCU University Auditorium',
+      description: [
+        "The Junior Philippine Computer Society \u2013 T.I.P. QC Chapter, in partnership with the AWS Student Builder Group \u2013 QCU, Bitskwela, and Coins.ph, is set to host CloudChain Summit: Blockchain & Web3 on AWS, an afternoon seminar exploring blockchain, Web3, digital assets, and cloud computing on AWS. The program aims to introduce participants to Web3 fundamentals, cloud infrastructure, career opportunities, and practical industry insights.",
+        "Originally scheduled for August 28, 2026, the event was postponed due to the Habagat and the resulting cancellation of classes. It has been rescheduled to September 23, 2026.",
+        "The summit looks forward to bringing students and technology enthusiasts together to explore emerging technologies and build a stronger foundation in Web3 and cloud computing."
+      ],
+      media: [
+        { label: 'Facebook post', html: '<iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Faws.qcu%2Fposts%2Fpfbid0KKghdzVi9jbBaiezynJNANjJmDWJCzpKP9AegwUxPgxgZ9fHAadiyvdoHZr6aAkcl&show_text=true&width=500" width="500" height="504" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>' },
+        { label: 'Facebook post', html: '<iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fphoto.php%3Ffbid%3D122191204376842883%26set%3Da.122108057660842883%26type%3D3&show_text=true&width=500" width="500" height="690" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>' }
+      ]
+    }
+  };
+
+  const eventModal = document.getElementById('event-modal');
+  if (eventModal) {
+    const modalPanel = eventModal.querySelector('.modal-panel');
+    const modalClose = eventModal.querySelector('.modal-close');
+    const elTitle = document.getElementById('event-modal-title');
+    const elStatus = document.getElementById('event-modal-status');
+    const elDate = document.getElementById('event-modal-date');
+    const elLocation = document.getElementById('event-modal-location');
+    const elSpeaker = document.getElementById('event-modal-speaker');
+    const elDesc = document.getElementById('event-modal-desc');
+    const elMediaWrap = document.getElementById('event-modal-media-wrap');
+    const elGallery = document.getElementById('event-modal-gallery');
+    let lastFocusedEvent = null;
+
+    function scaleFbEmbed(wrap) {
+      const iframe = wrap.querySelector('iframe');
+      if (!iframe) return;
+      const nativeW = parseInt(iframe.getAttribute('width'), 10) || 500;
+      const nativeH = parseInt(iframe.getAttribute('height'), 10) || 300;
+      const boxW = wrap.clientWidth;
+      const boxH = wrap.clientHeight;
+      if (!boxW || !boxH) return;
+      const scale = Math.min(boxW / nativeW, boxH / nativeH);
+      iframe.style.width = nativeW + 'px';
+      iframe.style.height = nativeH + 'px';
+      iframe.style.transform = 'scale(' + scale + ')';
+    }
+
+    function rescaleOpenEmbeds() {
+      if (!eventModal.classList.contains('open')) return;
+      elGallery.querySelectorAll('.fb-embed').forEach(scaleFbEmbed);
+    }
+    window.addEventListener('resize', rescaleOpenEmbeds);
+
+    function openEventModal(id) {
+      const data = EVENTS_DATA[id];
+      if (!data) return;
+
+      elTitle.textContent = data.title;
+      elStatus.textContent = data.statusLabel;
+      elStatus.className = 'tag ' + data.statusClass;
+      elDate.textContent = data.dateLabel;
+
+      if (data.location) {
+        elLocation.innerHTML = '<strong>Location:</strong> ' + data.location;
+        elLocation.hidden = false;
+      } else {
+        elLocation.hidden = true;
+      }
+      if (data.speaker) {
+        elSpeaker.innerHTML = '<strong>Guest Speaker:</strong> ' + data.speaker;
+        elSpeaker.hidden = false;
+      } else {
+        elSpeaker.hidden = true;
+      }
+
+      elDesc.innerHTML = data.description.map((p) => '<p>' + p + '</p>').join('');
+
+      elGallery.innerHTML = '';
+      if (data.media && data.media.length) {
+        data.media.forEach((item) => {
+          const galleryItem = document.createElement('div');
+          galleryItem.className = 'gallery-item';
+          const fbWrap = document.createElement('div');
+          fbWrap.className = 'fb-embed';
+          fbWrap.setAttribute('aria-label', item.label);
+          fbWrap.innerHTML = item.html;
+          galleryItem.appendChild(fbWrap);
+          elGallery.appendChild(galleryItem);
+        });
+        elMediaWrap.hidden = false;
+      } else {
+        elMediaWrap.hidden = true;
+      }
+
+      eventModal.classList.add('open');
+      eventModal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      lastFocusedEvent = document.activeElement;
+      modalClose.focus();
+
+      // Iframes need a layout pass (and to load) before we can measure/scale them.
+      requestAnimationFrame(() => {
+        rescaleOpenEmbeds();
+        elGallery.querySelectorAll('.fb-embed iframe').forEach((f) => {
+          f.addEventListener('load', () => scaleFbEmbed(f.closest('.fb-embed')));
+        });
+      });
+    }
+
+    function closeEventModal() {
+      eventModal.classList.remove('open');
+      eventModal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      if (lastFocusedEvent) lastFocusedEvent.focus();
+    }
+
+    document.querySelectorAll('[data-event-modal]').forEach((trigger) => {
+      trigger.addEventListener('click', () => openEventModal(trigger.getAttribute('data-event-modal')));
+      trigger.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openEventModal(trigger.getAttribute('data-event-modal'));
+        }
+      });
+    });
+
+    modalClose.addEventListener('click', closeEventModal);
+    eventModal.addEventListener('click', (e) => {
+      if (e.target === eventModal) closeEventModal();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && eventModal.classList.contains('open')) closeEventModal();
+    });
+
+    eventModal.querySelectorAll('.gallery-nav-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const dir = parseInt(btn.getAttribute('data-scroll'), 10) || 1;
+        const step = Math.max(elGallery.clientWidth * 0.85, 240);
+        elGallery.scrollBy({ left: dir * step, behavior: 'smooth' });
+      });
+    });
+  }
+
+  // JPCitizens splash screen -----------------------------------------------
+  const COMMUNITY_CHAT_URL = 'https://m.me/cm/Yd8O2tFjWRxK59Aw/?send_source=cm%3Acopy_invite_link';
+  const SPLASH_SESSION_KEY = 'jpcs-splash-seen';
+
+  let splashAlreadySeen = false;
+  try { splashAlreadySeen = sessionStorage.getItem(SPLASH_SESSION_KEY) === '1'; } catch (e) {}
+
+  if (!splashAlreadySeen) {
+    const splash = document.createElement('div');
+    splash.className = 'modal-overlay';
+    splash.id = 'jpcitizen-splash';
+    splash.setAttribute('aria-hidden', 'true');
+    splash.innerHTML =
+      '<div class="modal-panel cartridge" role="dialog" aria-modal="true" aria-labelledby="splash-title">' +
+        '<button class="modal-close" type="button" aria-label="Close welcome message">&times;</button>' +
+        '<div class="modal-scroll">' +
+          '<span class="eyebrow on-light">WELCOME, JPCITIZEN</span>' +
+          '<div class="splash-grid">' +
+            '<div class="splash-col">' +
+              '<h3 id="splash-title">Stay Connected, JPCitizen!</h3>' +
+              '<p>Make it a habit to check your <strong>T.I.P. Email Inbox</strong> regularly — it\'s where we send the latest JPCS announcements, upcoming events, event updates, free certification opportunities, upskilling programs, and other community opportunities you won\'t want to miss.</p>' +
+            '</div>' +
+            '<div class="splash-divider" aria-hidden="true"></div>' +
+            '<div class="splash-col splash-col-right">' +
+              '<h4>Connect with fellow JPCitizens!</h4>' +
+              '<p>Haven\'t joined the JPCitizens Community Chat yet? Join the community to interact with fellow members, stay updated, and participate in conversations beyond our events.</p>' +
+              '<a class="btn btn-primary" href="' + COMMUNITY_CHAT_URL + '" target="_blank" rel="noopener">Join the Community Chat</a>' +
+              '<p class="splash-qr-hint">Having trouble with the link? Scan the QR code to join.</p>' +
+              '<div class="qr-box" id="jpcitizen-qr" aria-label="QR code to join the JPCitizens Community Chat"></div>' +
+            '</div>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+    document.body.appendChild(splash);
+
+    const splashClose = splash.querySelector('.modal-close');
+    let lastFocusedSplash = null;
+
+    function markSplashSeen() {
+      try { sessionStorage.setItem(SPLASH_SESSION_KEY, '1'); } catch (e) {}
+    }
+    function closeSplash() {
+      splash.classList.remove('open');
+      splash.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      markSplashSeen();
+      if (lastFocusedSplash) lastFocusedSplash.focus();
+    }
+    function openSplash() {
+      splash.classList.add('open');
+      splash.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      lastFocusedSplash = document.activeElement;
+      splashClose.focus();
+      generateQrCode();
+    }
+
+    let qrGenerated = false;
+    function generateQrCode() {
+      if (qrGenerated) return;
+      qrGenerated = true;
+      const qrBox = document.getElementById('jpcitizen-qr');
+      const renderQr = () => {
+        try {
+          new window.QRCode(qrBox, {
+            text: COMMUNITY_CHAT_URL,
+            width: 176,
+            height: 176,
+            colorDark: '#0C1E2A',
+            colorLight: '#FFFFFF',
+            correctLevel: window.QRCode.CorrectLevel.M
+          });
+        } catch (e) {}
+      };
+      if (window.QRCode) {
+        renderQr();
+      } else {
+        const script = document.createElement('script');
+        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js';
+        script.onload = renderQr;
+        document.head.appendChild(script);
+      }
+    }
+
+    splashClose.addEventListener('click', closeSplash);
+    splash.addEventListener('click', (e) => {
+      if (e.target === splash) closeSplash();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && splash.classList.contains('open')) closeSplash();
+    });
+
+    window.setTimeout(openSplash, 500);
+  }
 });

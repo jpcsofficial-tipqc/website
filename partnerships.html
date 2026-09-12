@@ -148,6 +148,14 @@
           <h3>UP Fair 2024: Quests Thursday</h3>
           <p>Held at UP Diliman Sunken Garden — celebrating women and queer empowerment with big names in OPM including Morissette, Yeng Constantino, and Gloc-9.</p>
         </article>
+        <article class="cartridge event-card clickable-card" tabindex="0" role="button" aria-haspopup="dialog" data-event-modal="cloudchain-summit">
+          <img src="assets/events/aws-qcu-cloudchain-summit.jpg" alt="CloudChain Summit: Blockchain and Web3 on AWS poster" width="1200" height="1200" loading="lazy">
+          <span class="tag upcoming">Upcoming</span>
+          <div class="event-meta">Sept 23, 2026 · with AWS Student Builder Group – QCU</div>
+          <h3>CloudChain Summit: Blockchain &amp; Web3 on AWS</h3>
+          <p>An afternoon seminar on blockchain, Web3, and cloud computing, co-organized with Bitskwela and Coins.ph. Rescheduled after a Habagat-related postponement.</p>
+          <span class="card-cta text-link-accent">View details &amp; posts →</span>
+        </article>
       </div>
 
     </div>
@@ -173,6 +181,30 @@
       </div>
     </div>
   </section>
+
+  <div class="modal-overlay" id="event-modal" aria-hidden="true">
+    <div class="modal-panel cartridge" role="dialog" aria-modal="true" aria-labelledby="event-modal-title">
+      <button class="modal-close" type="button" aria-label="Close event details">&times;</button>
+      <div class="modal-scroll">
+        <div class="modal-meta-row">
+          <span class="tag" id="event-modal-status"></span>
+        </div>
+        <h3 id="event-modal-title"></h3>
+        <p class="modal-field" id="event-modal-date"></p>
+        <p class="modal-field" id="event-modal-location" hidden></p>
+        <p class="modal-field" id="event-modal-speaker" hidden></p>
+        <div class="modal-desc" id="event-modal-desc"></div>
+        <div id="event-modal-media-wrap" hidden>
+          <div class="modal-media-head">Related Posts &amp; Media</div>
+          <div class="gallery-wrap">
+            <button class="gallery-nav-btn" type="button" data-scroll="-1" aria-label="Scroll media left">‹</button>
+            <div class="gallery-track" id="event-modal-gallery" tabindex="0" role="region" aria-label="Related media"></div>
+            <button class="gallery-nav-btn" type="button" data-scroll="1" aria-label="Scroll media right">›</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </main>
 
