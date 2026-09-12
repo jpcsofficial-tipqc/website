@@ -6,7 +6,7 @@
 (function(){
   try {
     var t = localStorage.getItem('jpcs-theme');
-    if (!t) { t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+    if (!t) { t = 'light'; }
     document.documentElement.setAttribute('data-theme', t);
   } catch (e) {}
 })();
@@ -61,11 +61,10 @@
     <div class="container">
       <div class="section-head">
         <span class="eyebrow on-light">SY 2026–2027 · LATEST</span>
-        <h2>What's happened — and what's on hold</h2>
-        <p>Tap a card for the full story: description, and related posts and videos.</p>
+        <h2>What's happened</h2>
       </div>
 
-      <div class="grid grid-2">
+      <div class="grid grid-2 latest-updates-grid">
 
         <article class="cartridge event-card clickable-card" tabindex="0" role="button" aria-haspopup="dialog" data-event-modal="slf2026">
           <img src="assets/events/slf-2026-pixarverse.jpg" alt="JPCS members at the SLF 2026 Pixarverse booth" width="1200" height="900" loading="lazy">
@@ -330,13 +329,13 @@
     <div class="modal-panel cartridge" role="dialog" aria-modal="true" aria-labelledby="event-modal-title">
       <button class="modal-close" type="button" aria-label="Close event details">&times;</button>
       <div class="modal-scroll">
+        <h3 id="event-modal-title"></h3>
         <div class="modal-meta-row">
           <span class="tag" id="event-modal-status"></span>
+          <span class="modal-chip" id="event-modal-date"></span>
+          <span class="modal-chip" id="event-modal-location" hidden></span>
+          <span class="modal-chip" id="event-modal-speaker" hidden></span>
         </div>
-        <h3 id="event-modal-title"></h3>
-        <p class="modal-field" id="event-modal-date"></p>
-        <p class="modal-field" id="event-modal-location" hidden></p>
-        <p class="modal-field" id="event-modal-speaker" hidden></p>
         <div class="modal-desc" id="event-modal-desc"></div>
         <div id="event-modal-media-wrap" hidden>
           <div class="modal-media-head">Related Posts &amp; Media</div>

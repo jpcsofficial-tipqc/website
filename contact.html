@@ -6,7 +6,7 @@
 (function(){
   try {
     var t = localStorage.getItem('jpcs-theme');
-    if (!t) { t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+    if (!t) { t = 'light'; }
     document.documentElement.setAttribute('data-theme', t);
   } catch (e) {}
 })();
@@ -65,19 +65,21 @@
         <form id="contact-form">
           <input type="hidden" name="access_key" value="fe481099-92e9-472d-b583-e614b848ac9a">
           <input type="hidden" name="subject" value="New message from JPCS T.I.P. QC website">
-          <div class="field">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" required autocomplete="name">
-          </div>
-          <div class="field">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required autocomplete="email">
+          <div class="field-row">
+            <div class="field">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" required autocomplete="name">
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required autocomplete="email">
+            </div>
           </div>
           <div class="field">
             <label for="message">Message</label>
             <textarea id="message" name="message" required></textarea>
           </div>
-          <button type="submit" class="btn btn-primary">Send Message</button>
+          <button type="submit" class="btn btn-primary btn-block">Send Message</button>
           <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
         </form>
       </div>

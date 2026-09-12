@@ -161,11 +161,10 @@ document.addEventListener('DOMContentLoaded', () => {
         "Over the two-day event, students visited the JPCS booth to learn more about the organization, connect with fellow tech enthusiasts, and discover opportunities in computing. The fair also marked the opening of JPCS membership registration, inviting new and returning members to take part in upcoming events, competitions, and activities throughout the academic year."
       ],
       media: [
-        { label: 'Facebook post', html: '<iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FLORSOTIPQC%2Fposts%2Fpfbid0w5asfRGn3s9D9W7N2euUwf39jomQYFjThtJow7vipivZcicbEZazLsXAKZj2QfQYl&show_text=true&width=500" width="500" height="730" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>' },
-        { label: 'Facebook reel', html: '<iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F2127831438075925%2F&show_text=true&width=267&t=0" width="267" height="591" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>' },
-        { label: 'Facebook post', html: '<iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fjpcstipqcofficial%2Fposts%2Fpfbid037rbMz4iogDnjgXZun1SvnyL9UxTmaTDLhdiDeAQQjSjXQivSsHrfJUxEnQksqzpnl&show_text=true&width=500" width="500" height="734" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>' },
-        { label: 'Facebook post', html: '<iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fjpcstipqcofficial%2Fposts%2Fpfbid02y1dgx8jP8CEdAZNFZ6T3qBJ5SRdgEGtnwPvyK8MbFXqiVymyugazq8ttA95jgiBWl&show_text=true&width=500" width="500" height="810" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>' },
-        { label: 'Facebook post', html: '<iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fjpcstipqcofficial%2Fposts%2Fpfbid02KyoFLGMnt6A7W2GhsCzXmBGUsYTsRnsYD5nrX4ZXZhLNgHoJqeseQb2M9wSGQaoWl&show_text=true&width=500" width="500" height="849" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>' }
+        { label: 'JPCS Poster', html: '<iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FLORSOTIPQC%2Fposts%2Fpfbid02zw2ar6CbuKUTzPMSRD8bspsE3Sc94XjCqZ1uFyCWgjoGVz1Gevhot21YqHJQ1EPml&show_text=false&width=500" width="500" height="498" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>' },
+        { label: 'Reel', html: '<iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F2127831438075925%2F&show_text=false&width=267&t=0" width="267" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>' },
+        { label: 'Day 1 Highlights', html: '<iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fphoto.php%3Ffbid%3D1480009340839908%26set%3Da.470964338411085%26type%3D3&show_text=false&width=500" width="500" height="810" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>' },
+        { label: 'Day 2 Highlights', html: '<iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fphoto.php%3Ffbid%3D1482718220569020%26set%3Da.470964338411085%26type%3D3&show_text=false&width=500" width="500" height="849" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>' }
       ]
     },
     'iot-seminar': {
@@ -181,8 +180,8 @@ document.addEventListener('DOMContentLoaded', () => {
         "A new date will be announced once rescheduled. JPCS looks forward to bringing students together for an engaging discussion on connected technologies and their role in shaping the future."
       ],
       media: [
-        { label: 'Facebook post', html: '<iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fjpcstipqcofficial%2Fposts%2Fpfbid0249Ljwq3BHp2g4d3zLZ4vt2FyK5d7iLbnwqPRjkkLHY4hCkrKwDEfFVXTCEHENFCCl&show_text=true&width=500" width="500" height="717" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>' },
-        { label: 'Facebook post', html: '<iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fjpcstipqcofficial%2Fposts%2Fpfbid0DGMbimsdkDqN7KGBzYhDHJvuWbqpfexcqg342geeMJQWQBp9WNWQCdBSsPfHZxNCl&show_text=true&width=500" width="500" height="718" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>' }
+        { label: 'Event Poster', html: '<iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fjpcstipqcofficial%2Fposts%2Fpfbid037WpvZrPoKX8ctqZPRrWvXdcieVAoRYdkGCC6aqGxqkwvPr9nthEfvso4UCos2rcNl&show_text=false&width=500" width="500" height="497" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>' },
+        { label: 'Guest Speaker', html: '<iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fjpcstipqcofficial%2Fposts%2Fpfbid02H7oJuSoTbiMfxEovLfRU1r22ZhYApGgppENk577d3ewwaVGxTD2ewQFfERdvcH7Kl&show_text=false&width=500" width="500" height="498" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>' }
       ]
     },
     'cloudchain-summit': {
@@ -197,8 +196,8 @@ document.addEventListener('DOMContentLoaded', () => {
         "The summit looks forward to bringing students and technology enthusiasts together to explore emerging technologies and build a stronger foundation in Web3 and cloud computing."
       ],
       media: [
-        { label: 'Facebook post', html: '<iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Faws.qcu%2Fposts%2Fpfbid0KKghdzVi9jbBaiezynJNANjJmDWJCzpKP9AegwUxPgxgZ9fHAadiyvdoHZr6aAkcl&show_text=true&width=500" width="500" height="504" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>' },
-        { label: 'Facebook post', html: '<iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fphoto.php%3Ffbid%3D122191204376842883%26set%3Da.122108057660842883%26type%3D3&show_text=true&width=500" width="500" height="690" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>' }
+        { label: 'Event Poster', html: '<iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fphoto.php%3Ffbid%3D122190960620842883%26set%3Da.122108057660842883%26type%3D3&show_text=false&width=500" width="500" height="504" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>' },
+        { label: 'Community Partner', html: '<iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fphoto.php%3Ffbid%3D122191204376842883%26set%3Da.122108057660842883%26type%3D3&show_text=false&width=500" width="500" height="690" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>' }
       ]
     }
   };
@@ -271,6 +270,10 @@ document.addEventListener('DOMContentLoaded', () => {
           fbWrap.setAttribute('aria-label', item.label);
           fbWrap.innerHTML = item.html;
           galleryItem.appendChild(fbWrap);
+          const caption = document.createElement('div');
+          caption.className = 'gallery-caption';
+          caption.textContent = item.label;
+          galleryItem.appendChild(caption);
           elGallery.appendChild(galleryItem);
         });
         elMediaWrap.hidden = false;
@@ -343,19 +346,27 @@ document.addEventListener('DOMContentLoaded', () => {
       '<div class="modal-panel cartridge" role="dialog" aria-modal="true" aria-labelledby="splash-title">' +
         '<button class="modal-close" type="button" aria-label="Close welcome message">&times;</button>' +
         '<div class="modal-scroll">' +
-          '<span class="eyebrow on-light">WELCOME, JPCITIZEN</span>' +
+          '<div class="splash-hero">' +
+            '<span class="splash-badge" aria-hidden="true">🎓</span>' +
+            '<div>' +
+              '<span class="eyebrow on-light">WELCOME, JPCITIZEN</span>' +
+              '<h3 id="splash-title">Stay Connected, JPCitizen!</h3>' +
+            '</div>' +
+          '</div>' +
           '<div class="splash-grid">' +
             '<div class="splash-col">' +
-              '<h3 id="splash-title">Stay Connected, JPCitizen!</h3>' +
-              '<p>Make it a habit to check your <strong>T.I.P. Email Inbox</strong> regularly — it\'s where we send the latest JPCS announcements, upcoming events, event updates, free certification opportunities, upskilling programs, and other community opportunities you won\'t want to miss.</p>' +
+              '<span class="splash-label">✉️ T.I.P. Email Inbox</span>' +
+              '<p>Check it regularly — it\'s where we send the latest JPCS announcements, upcoming events, event updates, free certification opportunities, upskilling programs, and other community opportunities you won\'t want to miss.</p>' +
             '</div>' +
             '<div class="splash-divider" aria-hidden="true"></div>' +
-            '<div class="splash-col splash-col-right">' +
-              '<h4>Connect with fellow JPCitizens!</h4>' +
-              '<p>Haven\'t joined the JPCitizens Community Chat yet? Join the community to interact with fellow members, stay updated, and participate in conversations beyond our events.</p>' +
-              '<a class="btn btn-primary" href="' + COMMUNITY_CHAT_URL + '" target="_blank" rel="noopener">Join the Community Chat</a>' +
-              '<p class="splash-qr-hint">Having trouble with the link? Scan the QR code to join.</p>' +
-              '<div class="qr-box" id="jpcitizen-qr" aria-label="QR code to join the JPCitizens Community Chat"></div>' +
+            '<div class="splash-col splash-col-action">' +
+              '<span class="splash-label">💬 Community Chat</span>' +
+              '<p>Haven\'t joined the JPCitizens Community Chat yet? Interact with fellow members and stay updated beyond our events.</p>' +
+              '<a class="btn btn-primary btn-block" href="' + COMMUNITY_CHAT_URL + '" target="_blank" rel="noopener">Join the Community Chat</a>' +
+              '<div class="splash-qr-row">' +
+                '<div class="qr-box qr-box-mini" id="jpcitizen-qr" aria-label="QR code to join the JPCitizens Community Chat"></div>' +
+                '<span class="splash-qr-hint">Trouble with the link?<br>Scan to join instead.</span>' +
+              '</div>' +
             '</div>' +
           '</div>' +
         '</div>' +
@@ -393,8 +404,8 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
           new window.QRCode(qrBox, {
             text: COMMUNITY_CHAT_URL,
-            width: 176,
-            height: 176,
+            width: 108,
+            height: 108,
             colorDark: '#0C1E2A',
             colorLight: '#FFFFFF',
             correctLevel: window.QRCode.CorrectLevel.M
