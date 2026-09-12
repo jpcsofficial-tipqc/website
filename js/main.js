@@ -331,7 +331,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // JPCitizens splash screen -----------------------------------------------
-  const COMMUNITY_CHAT_URL = 'https://m.me/cm/Yd8O2tFjWRxK59Aw/?send_source=cm%3Acopy_invite_link';
+  const COMMUNITY_CHAT_URL = 'www.facebook.com/groups/-1027045503697454/chats/1040471502135796/';
   const SPLASH_SESSION_KEY = 'jpcs-splash-seen';
 
   let splashAlreadySeen = false;
