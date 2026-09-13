@@ -331,7 +331,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // JPCitizens splash screen -----------------------------------------------
-  const COMMUNITY_CHAT_URL = 'www.facebook.com/groups/-1027045503697454/chats/1040471502135796/';
   const SPLASH_SESSION_KEY = 'jpcs-splash-seen';
 
   let splashAlreadySeen = false;
@@ -347,25 +346,28 @@ document.addEventListener('DOMContentLoaded', () => {
         '<button class="modal-close" type="button" aria-label="Close welcome message">&times;</button>' +
         '<div class="modal-scroll">' +
           '<div class="splash-hero">' +
-            '<span class="splash-badge" aria-hidden="true">🎓</span>' +
+            '<span class="splash-badge" aria-hidden="true">✉️</span>' +
             '<div>' +
               '<span class="eyebrow on-light">WELCOME, JPCITIZEN</span>' +
               '<h3 id="splash-title">Stay Connected, JPCitizen!</h3>' +
             '</div>' +
           '</div>' +
-          '<div class="splash-grid">' +
-            '<div class="splash-col">' +
-              '<span class="splash-label">✉️ T.I.P. Email Inbox</span>' +
-              '<p>Check it regularly — it\'s where we send the latest JPCS announcements, upcoming events, event updates, free certification opportunities, upskilling programs, and other community opportunities you won\'t want to miss.</p>' +
+          '<div class="splash-notices">' +
+            '<div class="splash-notice-item splash-notice-email">' +
+              '<div class="splash-notice-icon" aria-hidden="true">✉️</div>' +
+              '<div class="splash-notice-content">' +
+                '<span class="splash-label">T.I.P. Email Inbox</span>' +
+                '<p>Check it regularly — it\'s where we send the latest JPCS announcements, upcoming events, event updates, free certification &amp; upskilling programs, and other community opportunities you won\'t want to miss.</p>' +
+              '</div>' +
             '</div>' +
-            '<div class="splash-divider" aria-hidden="true"></div>' +
-            '<div class="splash-col splash-col-action">' +
-              '<span class="splash-label">💬 Community Chat</span>' +
-              '<p>Haven\'t joined the JPCitizens Community Chat yet? Interact with fellow members and stay updated beyond our events.</p>' +
-              '<a class="btn btn-primary btn-block" href="' + COMMUNITY_CHAT_URL + '" target="_blank" rel="noopener">Join the Community Chat</a>' +
-              '<div class="splash-qr-row">' +
-                '<div class="qr-box qr-box-mini" id="jpcitizen-qr" aria-label="QR code to join the JPCitizens Community Chat"></div>' +
-                '<span class="splash-qr-hint">Trouble with the link?<br>Scan to join instead.</span>' +
+            '<div class="splash-notice-item splash-notice-alert">' +
+              '<div class="splash-notice-icon" aria-hidden="true">📢</div>' +
+              '<div class="splash-notice-content">' +
+                '<div class="splash-notice-head">' +
+                  '<span class="splash-label">Event Update</span>' +
+                  '<span class="tag postponed">Postponed</span>' +
+                '</div>' +
+                '<p><strong>IoT Seminar – Where Devices Connect: Exploring the World of IoT</strong> has been postponed due to Habagat-related class suspensions. A new date will be announced soon.</p>' +
               '</div>' +
             '</div>' +
           '</div>' +
@@ -392,34 +394,6 @@ document.addEventListener('DOMContentLoaded', () => {
       document.body.style.overflow = 'hidden';
       lastFocusedSplash = document.activeElement;
       splashClose.focus();
-      generateQrCode();
-    }
-
-    let qrGenerated = false;
-    function generateQrCode() {
-      if (qrGenerated) return;
-      qrGenerated = true;
-      const qrBox = document.getElementById('jpcitizen-qr');
-      const renderQr = () => {
-        try {
-          new window.QRCode(qrBox, {
-            text: COMMUNITY_CHAT_URL,
-            width: 108,
-            height: 108,
-            colorDark: '#0C1E2A',
-            colorLight: '#FFFFFF',
-            correctLevel: window.QRCode.CorrectLevel.M
-          });
-        } catch (e) {}
-      };
-      if (window.QRCode) {
-        renderQr();
-      } else {
-        const script = document.createElement('script');
-        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js';
-        script.onload = renderQr;
-        document.head.appendChild(script);
-      }
     }
 
     splashClose.addEventListener('click', closeSplash);
