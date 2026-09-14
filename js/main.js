@@ -337,45 +337,61 @@ document.addEventListener('DOMContentLoaded', () => {
   try { splashAlreadySeen = sessionStorage.getItem(SPLASH_SESSION_KEY) === '1'; } catch (e) {}
 
   if (!splashAlreadySeen) {
+    const ICON_MAIL =
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" ' +
+      'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">' +
+      '<rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M4 7.2l8 5.8 8-5.8"/></svg>';
+    const ICON_MEGAPHONE =
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" ' +
+      'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">' +
+      '<path d="M3 10.5v3a1.2 1.2 0 0 0 1.2 1.2h1.6l1.2 4.3h2l-1.2-4.3H9l9 3.8V5.7l-9 3.8H4.2A1.2 1.2 0 0 0 3 10.5z"/>' +
+      '<path d="M17.5 9v6"/></svg>';
+    const ICON_CLOSE =
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" ' +
+      'stroke-linecap="round" aria-hidden="true" focusable="false">' +
+      '<path d="M6 6l12 12M18 6L6 18"/></svg>';
+
     const splash = document.createElement('div');
     splash.className = 'modal-overlay';
     splash.id = 'jpcitizen-splash';
     splash.setAttribute('aria-hidden', 'true');
     splash.innerHTML =
-      '<div class="modal-panel cartridge" role="dialog" aria-modal="true" aria-labelledby="splash-title">' +
-        '<button class="modal-close" type="button" aria-label="Close welcome message">&times;</button>' +
-        '<div class="modal-scroll">' +
-          '<div class="splash-hero">' +
-            '<span class="splash-badge" aria-hidden="true">✉️</span>' +
-            '<div>' +
-              '<span class="eyebrow on-light">WELCOME, JPCITIZEN</span>' +
-              '<h3 id="splash-title">Stay Connected, JPCitizen!</h3>' +
+      '<div class="modal-panel jpc-panel" role="dialog" aria-modal="true" aria-labelledby="splash-title" aria-describedby="splash-desc">' +
+        '<button class="modal-close jpc-close" type="button" aria-label="Close welcome message">' + ICON_CLOSE + '</button>' +
+        '<div class="jpc-body">' +
+          '<div class="jpc-hero">' +
+            '<span class="jpc-badge" aria-hidden="true">' + ICON_MAIL + '</span>' +
+            '<div class="jpc-heading">' +
+              '<span class="jpc-eyebrow">Welcome, JPCitizen</span>' +
+              '<h3 id="splash-title">Stay connected, JPCitizen!</h3>' +
             '</div>' +
           '</div>' +
-          '<div class="splash-notices">' +
-            '<div class="splash-notice-item splash-notice-email">' +
-              '<div class="splash-notice-icon" aria-hidden="true">✉️</div>' +
-              '<div class="splash-notice-content">' +
-                '<span class="splash-label">T.I.P. Email Inbox</span>' +
-                '<p>Check it regularly — it\'s where we send the latest JPCS announcements, upcoming events, event updates, free certification &amp; upskilling programs, and other community opportunities you won\'t want to miss.</p>' +
+          '<ul class="jpc-list" id="splash-desc">' +
+            '<li class="jpc-item">' +
+              '<span class="jpc-item-icon" aria-hidden="true">' + ICON_MAIL + '</span>' +
+              '<div class="jpc-item-copy">' +
+                '<span class="jpc-item-label">T.I.P. Email Inbox</span>' +
+                '<p>Announcements, events, and free upskilling programs land here — check it often.</p>' +
               '</div>' +
-            '</div>' +
-            '<div class="splash-notice-item splash-notice-alert">' +
-              '<div class="splash-notice-icon" aria-hidden="true">📢</div>' +
-              '<div class="splash-notice-content">' +
-                '<div class="splash-notice-head">' +
-                  '<span class="splash-label">Event Update</span>' +
+            '</li>' +
+            '<li class="jpc-item jpc-item--alert">' +
+              '<span class="jpc-item-icon" aria-hidden="true">' + ICON_MEGAPHONE + '</span>' +
+              '<div class="jpc-item-copy">' +
+                '<div class="jpc-item-head">' +
+                  '<span class="jpc-item-label">Event update</span>' +
                   '<span class="tag postponed">Postponed</span>' +
                 '</div>' +
-                '<p><strong>IoT Seminar – Where Devices Connect: Exploring the World of IoT</strong> has been postponed due to Habagat-related class suspensions. A new date will be announced soon.</p>' +
+                '<p><strong>IoT Seminar</strong> postponed due to Habagat class suspensions — new date coming soon.</p>' +
               '</div>' +
-            '</div>' +
-          '</div>' +
+            '</li>' +
+          '</ul>' +
+          '<button type="button" class="btn btn-primary btn-block jpc-cta">Got it, thanks!</button>' +
         '</div>' +
       '</div>';
     document.body.appendChild(splash);
 
-    const splashClose = splash.querySelector('.modal-close');
+    const splashClose = splash.querySelector('.jpc-close');
+    const splashCta = splash.querySelector('.jpc-cta');
     let lastFocusedSplash = null;
 
     function markSplashSeen() {
@@ -397,6 +413,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     splashClose.addEventListener('click', closeSplash);
+    splashCta.addEventListener('click', closeSplash);
     splash.addEventListener('click', (e) => {
       if (e.target === splash) closeSplash();
     });
