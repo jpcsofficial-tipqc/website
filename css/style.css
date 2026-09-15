@@ -59,6 +59,28 @@
   --muted-text: var(--gray-slate);
   --success-text: var(--green-deep);
   --danger-text: var(--coral-deep);
+
+  /* Header — frosted glass system (OS-grade material, theme-independent brand bar) */
+  --header-bg: rgba(7, 13, 26, 0.75);
+  --header-bg-solid: #070d1a;
+  --header-border: rgba(255, 255, 255, 0.08);
+  --header-blur: 20px;
+  --drawer-bg: rgba(7, 13, 26, 0.95);
+  --gold-ink: #8A5A00; /* AA-safe amber-on-light for text/labels (contrast ≥4.5:1 on white) */
+
+  /* Splash modal — porcelain glass surface (pops against dark navy page backdrop) */
+  --splash-surface: rgba(255, 255, 255, 0.94);
+  --splash-border: rgba(15, 23, 42, 0.08);
+  --splash-text: #0f172a;      /* slate-900 */
+  --splash-muted: #475569;     /* slate-600 */
+  --splash-item-bg: rgba(248, 250, 252, 0.85);   /* slate-50 glass */
+  --splash-item-border: rgba(226, 232, 240, 0.80); /* slate-200 */
+  --splash-alert-bg: rgba(254, 242, 242, 0.85);   /* red-50 glass */
+  --splash-alert-border: rgba(252, 165, 165, 0.5); /* red-300 */
+  /* Concentric radii: R_outer = R_inner + Padding → 32 = 16 + 16 */
+  --splash-r-outer: 32px;
+  --splash-r-inner: 16px;
+  --splash-pad: 16px;
 }
 
 html[data-theme="dark"] {
@@ -241,18 +263,33 @@ html[data-theme="dark"] .eyebrow.on-light { background: var(--navy-soft); box-sh
   .btn-on-dark:hover { box-shadow: 6px 6px 0 var(--gold-soft); }
 }
 
-/* Nav (Mobile First) */
+/* ==========================================================
+   Global Header & Navigation System
+   Floating frosted-glass bar · pill nav · slide-over mobile drawer
+   Radius formula: R_outer = R_inner + Padding
+   ========================================================== */
 .site-header {
   position: sticky;
   top: 0;
-  z-index: 100;
-  background: var(--navy-deep);
-  border-bottom: var(--border-w) solid var(--gold);
+  z-index: 200;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0) 40%),
+    var(--header-bg);
+  background-color: var(--header-bg);
+  -webkit-backdrop-filter: blur(var(--header-blur)) saturate(180%);
+  backdrop-filter: blur(var(--header-blur)) saturate(180%);
+  border-bottom: 1px solid var(--header-border);
+  box-shadow: 0 1px 0 rgba(0,0,0,0.25), 0 12px 30px -18px rgba(0,0,0,0.6);
+}
+/* Fallback for browsers without backdrop-filter support */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .site-header { background: var(--header-bg-solid); }
 }
 .nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 12px;
   padding: 10px 20px;
   max-width: var(--maxw);
   margin: 0 auto;
@@ -268,38 +305,86 @@ html[data-theme="dark"] .eyebrow.on-light { background: var(--navy-soft); box-sh
   font-family: var(--font-display);
   font-weight: 700;
   font-size: 15px;
+  min-width: 0;
 }
-.nav-brand img { height: 42px; width: auto; }
-.nav-brand span small { display: block; font-family: var(--font-mono); font-weight: 400; font-size: 11px; color: var(--teal-bright); }
+.nav {
+  min-width: 0; /* allow flex children to shrink instead of overflowing on narrow phones */
+}
+.nav-brand { min-width: 0; flex-shrink: 1; }
+.nav-brand img { height: 38px; width: auto; flex-shrink: 0; }
+.nav-brand .nav-brand-text {
+  min-width: 0;
+  line-height: 1.25;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+/* Subtitle is hidden by default (mobile-first) and only introduced once the
+   header has real breathing room. The previous rule inverted this — it hid
+   the subtitle only *below* 400px, so the entire 400–767px band (iPhone 11
+   @414, Galaxy S24 Ultra @412, Pixel-class phones @412–430...) still showed
+   it, wrapped, and collided with the theme toggle / hamburger. Locking the
+   mobile brand lockup to "[Logo] JPCS T.I.P. QC" for the *whole* phone
+   range and introducing the subtitle only at the tablet breakpoint (≥768px,
+   where the desktop pill nav also has room) fixes it for every device in
+   the 360–430px class, not just the three viewports that happened to be
+   spot-checked. */
+.nav-brand small {
+  display: none;
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: 10.5px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: #94a3b8;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
-.nav-toggle {
+@media (min-width: 768px) {
+  .nav-brand small { display: block; }
+}
+
+/* Utility cluster: theme toggle + mobile trigger, balanced visual weight */
+.nav-utility {
   display: flex;
   align-items: center;
-  justify-content: center;
-  background: none;
-  border: 2px solid var(--gold);
-  color: var(--gold);
-  border-radius: 6px;
-  min-height: 48px; 
-  min-width: 48px;
-  font-size: 18px;
-  cursor: pointer;
+  gap: 8px;
+  flex-shrink: 0;
 }
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 216, 115, 0.35);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--gold-soft);
+  cursor: pointer;
+  transition: transform var(--dur-fast) var(--ease), background var(--dur) var(--ease), border-color var(--dur) var(--ease);
+  flex-shrink: 0;
+}
+.theme-toggle svg { width: 19px; height: 19px; }
+@media (hover: hover) and (pointer: fine) {
+  .theme-toggle:hover { transform: scale(1.06); background: rgba(255, 216, 115, 0.14); border-color: var(--gold-soft); }
+}
+.theme-toggle:active { transform: scale(0.92); }
+.theme-toggle:focus-visible { outline: 2px solid var(--gold-soft); outline-offset: 2px; }
+.theme-toggle.spin svg { transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); transform: rotate(180deg) scale(0.85); }
+
+/* Desktop navigation — restrained rail (not a pill container), with a
+   frosted chip + gold micro-line for the active state (never a solid pill). */
 .nav-links {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
   display: none;
-  flex-direction: column;
-  background: var(--navy-deep);
-  border-bottom: var(--border-w) solid var(--gold);
-  padding: 10px 20px;
   list-style: none;
   margin: 0;
-  gap: 8px;
+  padding: 0;
+  gap: 2px;
 }
-.nav-links.open { display: flex; }
 .nav-links a {
   display: flex;
   align-items: center;
@@ -308,79 +393,166 @@ html[data-theme="dark"] .eyebrow.on-light { background: var(--navy-soft); box-sh
   color: var(--cream-dim);
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: 15px;
-  padding: 12px 14px;
-  min-height: 48px; 
-  border-radius: 6px;
+  font-size: 14px;
+  padding: 9px 16px;
+  border-radius: 10px;
   transition: background var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
 }
-.nav-links a::after {
+@media (hover: hover) and (pointer: fine) {
+  .nav-links a:hover { background: rgba(255, 255, 255, 0.08); color: var(--cream); }
+}
+.nav-links a.active {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--cream);
+}
+.nav-links a.active::after {
   content: "";
   position: absolute;
-  left: 14px; right: 14px; bottom: 6px;
+  left: 50%;
+  bottom: 3px;
+  transform: translateX(-50%);
+  width: 14px;
   height: 2px;
-  background: var(--gold-soft);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform var(--dur) var(--ease);
+  border-radius: 2px;
+  background: var(--gold);
 }
-.nav-links a:hover::after, .nav-links a.active::after { transform: scaleX(1); }
-.nav-links a:hover, .nav-links a.active { background: var(--navy-soft); color: var(--gold-soft); }
+.nav-links a:focus-visible { outline: 2px solid var(--gold-soft); outline-offset: 2px; }
 
-.nav-links li.theme-toggle-item {
-  margin-left: 0;
-  padding-left: 0;
-  border-top: 1px solid rgba(246,241,228,0.15);
-  padding-top: 14px;
-  margin-top: 6px;
-  width: 100%;
+/* Hamburger trigger — inline SVG, no emoji, visible only below desktop breakpoint */
+.nav-toggle {
   display: flex;
-  justify-content: flex-start;
-}
-.theme-toggle {
-  display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 48px; 
-  height: 48px;
-  border-radius: 50%;
-  border: 2px solid var(--gold-soft);
-  background: var(--navy-soft);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1.5px solid rgba(255, 255, 255, 0.14);
   color: var(--gold-soft);
-  font-size: 18px;
+  border-radius: 10px;
+  min-height: 44px;
+  min-width: 44px;
   cursor: pointer;
-  transition: transform var(--dur-fast) var(--ease), background var(--dur) var(--ease);
-  flex-shrink: 0;
+  transition: background var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease);
 }
+.nav-toggle:focus-visible { outline: 2px solid var(--gold-soft); outline-offset: 2px; }
 @media (hover: hover) and (pointer: fine) {
-  .theme-toggle:hover { transform: scale(1.08) rotate(-8deg); background: var(--navy); }
+  .nav-toggle:hover { background: rgba(255, 216, 115, 0.14); border-color: var(--gold-soft); }
 }
-.theme-toggle:active { transform: scale(0.94); }
-.theme-toggle.spin { transform: rotate(180deg) scale(0.85); transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
+.nav-toggle-bars { display: flex; flex-direction: column; justify-content: center; gap: 4px; width: 18px; }
+.nav-toggle-bars span { display: block; height: 2px; border-radius: 2px; background: currentColor; }
+.nav-toggle-bars span:nth-child(1) { width: 100%; }
+.nav-toggle-bars span:nth-child(2) { width: 100%; }
+.nav-toggle-bars span:nth-child(3) { width: 70%; }
 
 @media (min-width: 860px) {
   .nav-toggle { display: none; }
-  .nav-links {
-    position: static;
-    display: flex;
-    flex-direction: row;
-    background: transparent;
-    border-bottom: none;
-    padding: 0;
-    gap: 4px;
+  .nav-links { display: flex; }
+}
+
+/* Mobile slide-over drawer — OS-style panel with material depth */
+.drawer-scrim {
+  position: fixed;
+  inset: 0;
+  background: rgba(7, 12, 22, 0.65);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  z-index: 220;
+  opacity: 0;
+  transition: opacity var(--dur) var(--ease);
+}
+.drawer-scrim[hidden] { display: none; }
+.drawer-scrim.open { opacity: 1; }
+
+.nav-drawer {
+  position: fixed;
+  top: 0; right: 0; bottom: 0;
+  width: min(86vw, 340px);
+  display: flex;
+  flex-direction: column;
+  background: rgba(7, 13, 26, 0.95);
+  -webkit-backdrop-filter: blur(30px) saturate(180%);
+  backdrop-filter: blur(30px) saturate(180%);
+  border-left: 1px solid rgba(255, 255, 255, 0.10);
+  box-shadow: -24px 0 60px -12px rgba(0,0,0,0.5), inset 1px 0 0 rgba(255,255,255,0.04);
+  padding: 18px 18px calc(18px + env(safe-area-inset-bottom, 0px));
+  transform: translateX(100%);
+  transition: transform var(--dur) var(--ease);
+  z-index: 221;
+}
+.nav-drawer.open { transform: translateX(0); }
+
+.nav-drawer-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 14px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.nav-drawer-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--teal-bright);
+}
+.nav-drawer-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,0.07);
+  color: var(--gold-soft);
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease);
+}
+.nav-drawer-close:focus-visible { outline: 2px solid var(--gold-soft); outline-offset: 2px; }
+@media (hover: hover) and (pointer: fine) {
+  .nav-drawer-close:hover { background: rgba(244, 166, 35, 0.18); }
+}
+
+.nav-drawer-links { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 4px; }
+.nav-drawer-links a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--cream-dim);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 16px;
+  padding: 13px 14px;
+  min-height: 48px;
+  border-radius: 12px;
+  transition: background var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
+}
+.nav-drawer-links a:hover { background: rgba(255, 255, 255, 0.06); }
+.nav-drawer-links a.active {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--cream);
+}
+.nav-drawer-links a.active::before {
+  content: "";
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+  flex-shrink: 0;
+}
+.nav-drawer-links a:focus-visible { outline: 2px solid var(--gold-soft); outline-offset: 2px; }
+
+@media (min-width: 860px) {
+  .drawer-scrim, .nav-drawer { display: none; }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .site-header, .nav-drawer, #jpcitizen-splash .modal-panel.jpc-panel {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
   }
-  .nav-links a { padding: 10px 14px; min-height: auto; font-size: 14px; }
-  .nav-links li.theme-toggle-item { 
-    margin-left: 8px; 
-    padding-left: 8px; 
-    border-left: 1px solid rgba(246,241,228,0.15); 
-    border-top: none; 
-    padding-top: 0; 
-    margin-top: 0;
-    width: auto; 
-    display: block;
-  }
-  .theme-toggle { width: 40px; height: 40px; font-size: 16px; }
+  .site-header { background: var(--header-bg-solid); }
+  .nav-drawer { background: #0b1329; }
+  #jpcitizen-splash .modal-panel.jpc-panel { background: #ffffff; }
 }
 
 /* Hero */
@@ -749,56 +921,77 @@ html[data-theme="dark"] .section-dark { box-shadow: inset 0 1px 0 rgba(255, 216,
 @media (min-width: 480px) { #event-modal-gallery .gallery-item { width: 240px; } }
 #event-modal-gallery .gallery-caption { text-align: center; }
 
-/* JPCitizens splash — compact glass panel, scoped entirely to #jpcitizen-splash
+/* JPCitizens splash — porcelain glass surface, scoped entirely to #jpcitizen-splash
    so it never touches the shared .modal-overlay/.modal-panel/.cartridge rules
    used by the event-detail modal elsewhere on the site.
-   Corner-radius formula (concentric): R_outer = R_inner + padding
-   panel R_outer 28px, panel padding 18px  →  item R_inner 10px (28 = 10 + 18). */
-#jpcitizen-splash { backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+   Anatomy matches the canonical reference (floating badge → eyebrow/title →
+   stacked announcement rows → full-width CTA); only the material changed
+   from dark glass to porcelain glass so it pops off the dark page backdrop.
+   Corner-radius formula (concentric): R_outer = R_inner + Padding → 32 = 16 + 16. */
+#jpcitizen-splash {
+  background: rgba(7, 13, 26, 0.70);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
 
 #jpcitizen-splash .modal-panel.jpc-panel {
   max-width: 480px;
   max-height: 85vh;
   max-height: 85dvh;
-  padding: 52px 20px 20px;
-  background: rgba(10, 37, 64, 0.88);
-  border: 1px solid rgba(244, 166, 35, 0.32);
-  border-radius: 28px;
-  box-shadow: 0 24px 60px rgba(7, 26, 44, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(20px) saturate(140%);
-  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  padding: 56px var(--splash-pad) var(--splash-pad);
+  background: var(--splash-surface);
+  border: 1px solid rgba(255, 255, 255, 0.90);
+  border-radius: var(--splash-r-outer);
+  box-shadow:
+    0 0 0 1px rgba(15, 23, 42, 0.08),
+    0 24px 48px -12px rgba(0, 0, 0, 0.35),
+    0 4px 16px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(32px) saturate(180%);
+  -webkit-backdrop-filter: blur(32px) saturate(180%);
+  overflow: hidden;
 }
 /* Kill the shared cartridge corner accents + offset shadow for this instance only */
 #jpcitizen-splash .modal-panel.jpc-panel::before,
 #jpcitizen-splash .modal-panel.jpc-panel::after { content: none; }
 
+/* Close control: translucent glass disc with a hairline border, monochrome
+   icon — no default browser focus ring (the programmatic focus() on open
+   was leaking Chrome's blue ring); a deliberate amber focus-visible ring
+   replaces it instead. */
 #jpcitizen-splash .jpc-close {
   width: 44px; height: 44px;
-  top: 14px; right: 14px;
+  top: 10px; right: 10px;
   border-radius: 50%;
-  border: 1.5px solid rgba(244, 166, 35, 0.55);
-  background: rgba(7, 26, 44, 0.55);
-  color: var(--gold);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  background: rgba(15, 23, 42, 0.05);
+  color: var(--splash-muted);
+  outline: none;
+  transition: background var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
 }
 #jpcitizen-splash .jpc-close svg { width: 18px; height: 18px; }
 @media (hover: hover) and (pointer: fine) {
-  #jpcitizen-splash .jpc-close:hover { background: var(--gold); color: var(--navy-deep); border-color: var(--gold); }
+  #jpcitizen-splash .jpc-close:hover { background: rgba(15, 23, 42, 0.09); color: var(--splash-text); }
 }
+#jpcitizen-splash .jpc-close:focus-visible { outline: 2px solid #b45309; outline-offset: 2px; }
 
-.jpc-body { display: flex; flex-direction: column; gap: 16px; min-height: 0; }
+.jpc-body { display: flex; flex-direction: column; gap: 16px; min-height: 0; overflow-y: auto; }
 
 .jpc-hero { display: flex; align-items: center; gap: 12px; }
+/* Floating squircle badge — warm amber-tinted glass, matches the reference's
+   top-left mail icon composition. */
 .jpc-badge {
   flex-shrink: 0;
   width: 44px; height: 44px;
   display: flex; align-items: center; justify-content: center;
-  color: var(--gold);
-  background: rgba(244, 166, 35, 0.16);
-  border: 1px solid rgba(244, 166, 35, 0.4);
-  border-radius: 14px;
+  color: #d97706;
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.30);
+  border-radius: var(--splash-r-inner);
 }
 .jpc-badge svg { width: 22px; height: 22px; }
 .jpc-heading { min-width: 0; }
+/* Eyebrow tag: neutral slate glass chip, mono tracking — echoes the
+   reference's "WELCOME, JPCITIZEN" pill without the arcade typeface. */
 .jpc-eyebrow {
   display: inline-flex;
   align-items: center;
@@ -806,72 +999,118 @@ html[data-theme="dark"] .section-dark { box-shadow: inset 0 1px 0 rgba(255, 216,
   font-family: var(--font-mono);
   font-size: 10.5px;
   font-weight: 700;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.6px;
   text-transform: uppercase;
-  color: var(--gold);
-  background: rgba(244, 166, 35, 0.14);
-  border: 1px solid rgba(244, 166, 35, 0.3);
+  color: #b45309;
+  background: rgba(15, 23, 42, 0.06);
+  border: 1px solid rgba(15, 23, 42, 0.10);
   padding: 4px 10px;
   border-radius: 999px;
   margin-bottom: 6px;
 }
 .jpc-hero h3 {
   margin: 0;
-  color: var(--cream);
+  color: var(--splash-text);
+  font-weight: 700;
+  letter-spacing: -0.01em;
   font-size: clamp(1.15rem, 3.6vw + 0.6rem, 1.4rem);
   line-height: 1.25;
 }
 
+/* Stacked announcement rows — single column at every breakpoint, matching
+   the reference's vertical rhythm (icon-left, copy-right per row). */
 .jpc-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
 .jpc-item {
   display: flex;
   align-items: flex-start;
   gap: 12px;
-  padding: 12px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
+  padding: var(--splash-pad);
+  background: var(--splash-item-bg);
+  border: 1px solid var(--splash-item-border);
+  border-radius: var(--splash-r-inner);
 }
-.jpc-item--alert { background: rgba(239, 111, 83, 0.12); border-color: rgba(239, 111, 83, 0.4); }
+.jpc-item--alert { background: var(--splash-alert-bg); border-color: var(--splash-alert-border); }
 .jpc-item-icon {
   flex-shrink: 0;
   width: 36px; height: 36px;
   display: flex; align-items: center; justify-content: center;
-  color: var(--gold);
-  background: rgba(255, 255, 255, 0.07);
+  color: #d97706;
+  background: rgba(245, 158, 11, 0.10);
   border-radius: 10px;
 }
 .jpc-item-icon svg { width: 18px; height: 18px; }
-.jpc-item--alert .jpc-item-icon { color: #FFB199; }
+.jpc-item--alert .jpc-item-icon { color: #b91c1c; background: rgba(248, 113, 113, 0.14); }
 .jpc-item-copy { min-width: 0; flex: 1; }
 .jpc-item-label {
   display: block;
-  font-family: var(--font-mono);
-  font-size: 11.5px;
+  font-family: var(--font-display);
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.4px;
   text-transform: uppercase;
-  color: var(--cream);
+  color: #334155; /* slate-700 */
   margin-bottom: 4px;
 }
 .jpc-item-head { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 4px; }
 .jpc-item-head .jpc-item-label { margin-bottom: 0; }
 .jpc-item .tag { margin: 0; }
+/* Editorial semantic badge for the "Postponed" state — scoped to this modal
+   only so the shared .tag.postponed elsewhere on the site is untouched. */
+#jpcitizen-splash .tag.postponed {
+  background: rgba(254, 226, 226, 0.85);
+  color: #991b1b;
+  border: 1px solid rgba(248, 113, 113, 0.40);
+}
 .jpc-item-copy p {
   margin: 0;
   font-size: 13.5px;
-  line-height: 1.5;
-  color: rgba(246, 241, 228, 0.82);
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  line-height: 1.55;
+  color: var(--splash-muted);
+  /* Microcopy is tuned to fit without truncation — no line-clamp/ellipsis. */
 }
 
-.jpc-cta { width: 100%; min-height: 46px; font-size: 14.5px; }
+/* Primary CTA: tactile amber gradient, refined 1px border, inset specular
+   highlight — never the shared .btn/.btn-primary thick-border treatment.
+   Scoped to this modal only. */
+#jpcitizen-splash .jpc-cta {
+  width: 100%;
+  min-height: 44px;
+  font-size: 14.5px;
+  border: 1px solid rgba(180, 83, 9, 0.4);
+  color: var(--navy-deep);
+  background: linear-gradient(180deg, #f59e0b 0%, #d97706 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.30), 0 4px 12px rgba(217, 119, 6, 0.25);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  #jpcitizen-splash .jpc-cta:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.03);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 8px 18px rgba(217, 119, 6, 0.3);
+  }
+}
+#jpcitizen-splash .jpc-cta:active {
+  transform: translateY(0);
+  filter: brightness(0.97);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 3px 8px rgba(217, 119, 6, 0.25);
+}
+#jpcitizen-splash .jpc-cta:focus-visible { outline: 2px solid #b45309; outline-offset: 2px; }
 
 @media (min-width: 480px) {
-  #jpcitizen-splash .modal-panel.jpc-panel { padding: 52px 26px 24px; }
+  #jpcitizen-splash .modal-panel.jpc-panel { padding: 56px 26px var(--splash-pad); }
+}
+
+/* Spacious-but-restrained desktop footprint — wider than mobile, but the
+   reference's single stacked column is preserved (no 2-column grid). */
+@media (min-width: 640px) {
+  #jpcitizen-splash .modal-panel.jpc-panel {
+    max-width: 620px;
+    padding: 40px 32px 28px;
+  }
+  .jpc-hero h3 { font-size: 1.55rem; }
+  .jpc-body { gap: 20px; }
+  .jpc-item { padding: 18px; }
+  .jpc-item-copy p { font-size: 14px; }
 }
 
 /* Archive rows */

@@ -1,10 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   // Dark mode toggle --------------------------------------------------
+  const ICON_MOON =
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" ' +
+    'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">' +
+    '<path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z"/></svg>';
+  const ICON_SUN =
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" ' +
+    'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">' +
+    '<circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v3M12 18.5v3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M2.5 12h3M18.5 12h3M4.9 19.1 7 17M17 7l2.1-2.1"/></svg>';
+
   const themeToggle = document.getElementById('theme-toggle');
   if (themeToggle) {
     const setIconFor = (isDark) => {
-      themeToggle.textContent = isDark ? '☀️' : '🌙';
+      themeToggle.innerHTML = isDark ? ICON_SUN : ICON_MOON;
       themeToggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
     };
     setIconFor(document.documentElement.getAttribute('data-theme') === 'dark');
@@ -18,19 +27,51 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Mobile nav toggle ---------------------------------------------------
-  const toggle = document.querySelector('.nav-toggle');
-  const links = document.querySelector('.nav-links');
-  if (toggle && links) {
-    toggle.addEventListener('click', () => {
-      const isOpen = links.classList.toggle('open');
-      toggle.setAttribute('aria-expanded', String(isOpen));
-    });
-    links.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => {
-        links.classList.remove('open');
-        toggle.setAttribute('aria-expanded', 'false');
+  // Mobile nav — slide-over drawer ---------------------------------------
+  const navToggle = document.querySelector('.nav-toggle');
+  const navDrawer = document.getElementById('mobile-drawer');
+  const drawerScrim = document.getElementById('drawer-scrim');
+  if (navToggle && navDrawer && drawerScrim) {
+    const drawerClose = navDrawer.querySelector('.nav-drawer-close');
+    let lastFocusedNav = null;
+
+    function openDrawer() {
+      lastFocusedNav = document.activeElement;
+      drawerScrim.hidden = false;
+      requestAnimationFrame(() => {
+        drawerScrim.classList.add('open');
+        navDrawer.classList.add('open');
       });
+      navDrawer.setAttribute('aria-hidden', 'false');
+      navToggle.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+      if (drawerClose) drawerClose.focus();
+    }
+    function closeDrawer() {
+      drawerScrim.classList.remove('open');
+      navDrawer.classList.remove('open');
+      navDrawer.setAttribute('aria-hidden', 'true');
+      navToggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+      window.setTimeout(() => { drawerScrim.hidden = true; }, 260);
+      if (lastFocusedNav) lastFocusedNav.focus();
+    }
+
+    navToggle.addEventListener('click', () => {
+      const isOpen = navDrawer.classList.contains('open');
+      isOpen ? closeDrawer() : openDrawer();
+    });
+    if (drawerClose) drawerClose.addEventListener('click', closeDrawer);
+    drawerScrim.addEventListener('click', closeDrawer);
+    navDrawer.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', closeDrawer);
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && navDrawer.classList.contains('open')) closeDrawer();
+    });
+    // Collapse the drawer automatically if the viewport grows into desktop nav
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 860 && navDrawer.classList.contains('open')) closeDrawer();
     });
   }
 
@@ -371,7 +412,7 @@ document.addEventListener('DOMContentLoaded', () => {
               '<span class="jpc-item-icon" aria-hidden="true">' + ICON_MAIL + '</span>' +
               '<div class="jpc-item-copy">' +
                 '<span class="jpc-item-label">T.I.P. Email Inbox</span>' +
-                '<p>Announcements, events, and free upskilling programs land here — check it often.</p>' +
+                '<p>Announcements, events, and free upskilling programs land here. Check it often.</p>' +
               '</div>' +
             '</li>' +
             '<li class="jpc-item jpc-item--alert">' +
@@ -381,7 +422,7 @@ document.addEventListener('DOMContentLoaded', () => {
                   '<span class="jpc-item-label">Event update</span>' +
                   '<span class="tag postponed">Postponed</span>' +
                 '</div>' +
-                '<p><strong>IoT Seminar</strong> postponed due to Habagat class suspensions — new date coming soon.</p>' +
+                '<p><strong>IoT Seminar</strong> postponed due to Habagat class suspensions. New date coming soon.</p>' +
               '</div>' +
             '</li>' +
           '</ul>' +
